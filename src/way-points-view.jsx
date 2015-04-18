@@ -6,9 +6,8 @@ class WayPointsView extends React.Component {
 	render(){
 	  	return (
 	  		<section className="wayPointsView" style={{background: 'lightblue'}}>
-	  			<p>Im the Waypoints view</p>
-	  			<WayPoint />
-	  			<WayPoint />
+	  			<h3>Waypoints:</h3>
+	  			{ this.props.state.waypoints.map((value, index) => <WayPoint key={ index } index={ index } state={ value }/>) }
 	   		</section>
 	  	)
   	}

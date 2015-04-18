@@ -4,7 +4,8 @@ class WayPoint extends React.Component {
 	render(){
 	  	return (
 	  		<div className="wayPoint" style={{background: 'blue', marginLeft: '10px'}}>
-	  			<p>	Im a single waypoint</p> 
+	  			<h4>{this.props.state.title}</h4>
+	  			<p>{this.props.state.description}</p>
 	   		</div>
 	  	)
   	}

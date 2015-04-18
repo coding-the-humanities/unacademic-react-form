@@ -3,17 +3,19 @@ import React from 'react';
 class Resource extends React.Component {
 	render(){
 	  	return (
-	  		<section className="waypoints">
+	  		<section className="waypoints" style={{background: 'darkgreen', marginLeft: '10px'}}>
 	  			<p>With a resource</p> 
 	   		</section>
 	  	)
   	}
 }
 
-class Checkpoint extends React.Component {
+
+
+class CheckPoint extends React.Component {
 	render(){
 	  	return (
-	  		<section className="checkpoint" style={{background: 'green', marginLeft: '10px'}}>
+	  		<section className="checkPoint" style={{background: 'green', marginLeft: '10px'}}>
 	  			<p> Im a single checkpoint </p>
 	  			<Resource />
 	  			<Resource />
@@ -22,60 +24,72 @@ class Checkpoint extends React.Component {
   	}
 }
 
-class CheckpointsView extends React.Component {
+
+
+
+class CheckPointsView extends React.Component {
 	render(){
 	  	return (
 	  		<section className="waypoints" style={{background: 'lightgreen'}}>
 	  			<p>Im the checkpointsview</p>
-	  			<Checkpoint />
-	  			<Checkpoint />
+	  			<CheckPoint />
+	  			<CheckPoint />
 	   		</section>
 	  	)
   	}
 }
 
-class Waypoint extends React.Component {
+
+
+class WayPoint extends React.Component {
 	render(){
 	  	return (
-	  		<section className="waypoint" style={{background: 'blue', marginLeft: '10px'}}>
+	  		<section className="wayPoint" style={{background: 'blue', marginLeft: '10px'}}>
 	  			<p>	Im a single waypoint</p> 
 	   		</section>
 	  	)
   	}
 }
 
-class WaypointsView extends React.Component {
+
+
+
+class WayPointsView extends React.Component {
 	render(){
 	  	return (
-	  		<section className="waypointsView" style={{background: 'lightblue'}}>
+	  		<section className="wayPointsView" style={{background: 'lightblue'}}>
 	  			<p>Im the Waypoints view</p>
-	  			<Waypoint />
-	  			<Waypoint />
+	  			<WayPoint />
+	  			<WayPoint />
 	   		</section>
 	  	)
   	}
 }
+
+
+
 
 class LoginView extends React.Component {
 	render(){
 	  	return (
 	  		<section className="loginView" style={{background: 'pink'}}>
-	  			<p>
-	  				Im the login view!
-	  			</p>
+	  			<p>Im the login view!</p>
 	   		</section>
 	  	)
   	}
 }
 
+
+
+
 class Site extends React.Component {
 	render(){
 	  	return (
-	  		<main className="site" style={{background: 'lightgrey'}}>
+	  		<main className="site" style={{background: 'lightgrey', width: '400px'}}>
 
 	  			<LoginView />
-	  			<WaypointsView />
-	  			<CheckpointsView />
+	  			<WayPointsView />
+	  			<CheckPointsView />
 
 	   		</main>
 	  	)

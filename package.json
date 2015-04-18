@@ -1,9 +1,9 @@
 {
-  "name": "ast-project",
+  "name": "unacademic-form",
   "version": "0.0.1",
   "description": "",
   "main": "bundle.js",
-  "author": "Jan Hein Hoogstad",
+  "author": ["Jan Hein Hoogstad", "Robert-Jan Korteschiel"],
   "license": "MIT",
   "engines": {
     "iojs": ">= 1.6.2"
@@ -26,6 +26,7 @@
     "extract-text-webpack-plugin": "^0.3.8",
     "faker": "^2.1.2",
     "file-loader": "^0.8.1",
+    "firebase": "^2.2.4",
     "jsdom": "^4.0.2",
     "json-loader": "^0.5.1",
     "jsx-loader": "^0.12.2",
@@ -46,5 +47,8 @@
     "webpack": "^1.5.3",
     "webpack-dev-server": "^1.7.0",
     "yaml-loader": "^0.1.0"
+  },
+  "dependencies": {
+    "firebase": "^2.2.4"
   }
 }

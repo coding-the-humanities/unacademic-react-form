@@ -11,7 +11,13 @@ var config = {
     app: [
       'webpack-dev-server/client?http://localhost:8080',
       'webpack/hot/only-dev-server',
-      './src/entry.jsx'
+      './src/login.jsx',
+      './src/waypoints.jsx',
+      './src/waypoint.jsx',
+      './src/checkpoints.jsx',
+      './src/checkpoint.jsx',
+      './src/resource.jsx',
+      './src/site.jsx'
     ],
     vendor: [
       'react',

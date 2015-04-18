@@ -5,7 +5,9 @@ class WayPoint extends React.Component {
 		var waypoint = this.props.state;
 	  	return (
 	  		<div className="wayPoint" style={{background: 'blue', marginLeft: '10px'}}>
-	  			<h3>{waypoint.title}</h3>
+	  			<h3 contentEditable="true">title: {waypoint.title}</h3>
+	  			<p contentEditable="true">summary: {waypoint.summary}</p>
+	  			<p contentEditable="true">description: {waypoint.description}</p>
 	   		</div>
 	  	)
   	}

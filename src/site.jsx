@@ -5,6 +5,8 @@ import WayPointsView from './way-points-view.jsx';
 import LoginView from './login.jsx';
 import data from './data.jsx';
 
+import css from './styles/main.css';
+
 class Site extends React.Component {
 	constructor(props){
 		super(props);
@@ -24,7 +26,7 @@ class Site extends React.Component {
 	  	return (
 	  		<main className="site" style={{background: 'lightgrey', width: '800px', padding: '10px', margin: '0 auto'}}>
 	  			
-	  			<h1 contentEditable="true">Welcome to Unacademic</h1>
+	  			<h1 contentEditable="true">Welcome to Unacademic Curating Interface</h1>
 
 	  			<LoginView state={userData}/>
 	  			<WayPointsView state={userData} />

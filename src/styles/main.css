@@ -1,0 +1,33 @@
+.test {
+	background: red;
+}
+
+.resource {
+	background: darkgreen;
+	margin-left: 10px;
+}
+
+.editable {
+	display: inline-block;
+	min-width: 50px;
+	background: lightgreen;
+}
+
+
+
+
+/* clearfix */
+
+.cf:before,
+.cf:after {
+    content: " ";
+    display: table; 
+}
+
+.cf:after {
+    clear: both;
+}
+
+.cf {
+    *zoom: 1;
+}

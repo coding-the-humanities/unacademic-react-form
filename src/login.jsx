@@ -5,7 +5,7 @@ class LoginView extends React.Component {
 		var userData = this.props.state;
 	  	return (
 	  		<section className="loginView" style={{background: 'pink'}}>
-	  			<p>Youre logged in as: {userData.name}</p>
+	  			<p>You are logged in as: {userData.name}</p>
 	   		</section>
 	  	)
   	}

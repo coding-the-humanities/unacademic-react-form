@@ -3,12 +3,25 @@ import Resource from './resource.jsx';
 
 class CheckPoint extends React.Component {
 	render(){
-		var checkpoint = this.props.state;
+		var setValue = this.props.setValue,
+			checkpoint = this.props.state,
+			outsideIndex = this.props.index;
+
+		// console.log(this.props.index);
+
 	  	return (
-	  		<div className="checkPoint" style={{background: 'green', marginLeft: '10px'}}>
-	  			<h3> title: {checkpoint.title} </h3>
-	  			<p> description {checkpoint.description}</p>
-	  			{ checkpoint.resources.map((value, index) => <Resource key={ index } index={ index } state={ value }/>) }
+	  		<div className="checkpoint">
+	  			<h3> title: <input className="editable" defaultValue={checkpoint.title} onChange={ setValue.bind(this, outsideIndex) }></input></h3>
+	  			<p> description <input className="editable" defaultValue={checkpoint.description} onChange={ setValue.bind(this, outsideIndex) }></input></p>
+
+	  			{ checkpoint.resources.map((value, index) => {
+
+	  				var insideIndex = JSON.parse(JSON.stringify(outsideIndex)); 
+	  				insideIndex.push(index); 
+
+	  				return <Resource key={ index } index={ insideIndex } state={ value } setValue={setValue}/>
+	  				}
+	  			) }
 	   		</div>
 	  	)
   	}

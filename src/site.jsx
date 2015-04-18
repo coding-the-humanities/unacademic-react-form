@@ -14,26 +14,30 @@ class Site extends React.Component {
 			userData: {
 				id: 1,
 				name: 'Mr. Snotneus',
-				email: 'somethingelse@gmail.com',
+				email: 'somethingelse@example.com',
 				waypoints: data
 			},
 			activeWaypoint: 0,
 		}
 	}
-	setValue(){
-		console.log('I exist');
+	setValue(index, event){
+		console.log(index);
+		console.log(event.target.value);
 	}
 	render(){
 		var userData = this.state.userData,
-			activeWaypoint = this.state.activeWaypoint;
+			activeWaypoint = this.state.activeWaypoint,
+			setValue = this.setValue;
+			this.hi = 10;
 	  	return (
 	  		<main className="siteContainer">
 	  			
-	  			<h1>Welcome to Unacademic Curating Interface</h1>
+	  			<h1>Unacademic Temporary Curating Interface</h1>
 
 	  			<LoginView state={userData}/>
 	  			<WayPointsView state={userData} />
-	  			<CheckPointsView state={userData.waypoints[activeWaypoint]} />
+	  			<CheckPointsView state={userData.waypoints[activeWaypoint]} index={[activeWaypoint]} setValue={setValue.bind(this)}/>
+	   		
 	   		</main>
 	  	)
   	}

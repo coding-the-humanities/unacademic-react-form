@@ -9,7 +9,7 @@
 	margin: 0 auto;
 }
 
-.wayPointsView {
+.waypointsView {
 	background: lightblue;
 	width: 200px; 
 	float: left;
@@ -25,6 +25,11 @@
 	width: 500px;
 	margin-left: 50px; 
 	display: inline-block;
+}
+
+.checkpoint {
+	background: green; 
+	margin-left: 10px;
 }
 
 .resource {

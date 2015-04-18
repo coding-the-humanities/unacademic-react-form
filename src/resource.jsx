@@ -3,11 +3,12 @@ import React from 'react';
 class Resource extends React.Component {
 	render(){
 		var resource = this.props.state;
+		var setValue = function(){}; 
 	  	return (
 	  		<div className="resource">
-	  			<h4>title: &nbsp;<span className="editable" contentEditable="true">{resource.title}</span></h4>
-	  			<p>author: <span className="editable" contentEditable="true">{resource.author}</span></p>
-	  			<p>url: <span className="editable" contentEditable="true">{resource.url}</span></p> 
+	  			<h4>title: &nbsp;<input className="editable" value={resource.title}></input></h4>
+	  			<p>author: <input className="editable" value={resource.author}></input></p>
+	  			<p>url: <input className="editable" value={resource.url} onclick={ setValue() }></input></p> 
 	   		</div>
 	  	)
   	}

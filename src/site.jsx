@@ -20,13 +20,16 @@ class Site extends React.Component {
 			activeWaypoint: 0,
 		}
 	}
+	setValue(){
+		console.log('I exist');
+	}
 	render(){
 		var userData = this.state.userData,
 			activeWaypoint = this.state.activeWaypoint;
 	  	return (
-	  		<main className="site" style={{background: 'lightgrey', width: '800px', padding: '10px', margin: '0 auto'}}>
+	  		<main className="siteContainer">
 	  			
-	  			<h1 contentEditable="true">Welcome to Unacademic Curating Interface</h1>
+	  			<h1>Welcome to Unacademic Curating Interface</h1>
 
 	  			<LoginView state={userData}/>
 	  			<WayPointsView state={userData} />

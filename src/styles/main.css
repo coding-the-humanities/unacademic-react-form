@@ -2,15 +2,46 @@
 	background: red;
 }
 
+.siteContainer {
+	background: lightgrey; 
+	width: 800px;
+	padding: 10px; 
+	margin: 0 auto;
+}
+
+.wayPointsView {
+	background: lightblue;
+	width: 200px; 
+	float: left;
+}
+
+.waypoint {
+	background: blue;
+	margin-left: 10px;
+}
+
+.checkpointsView {
+	background: lightgreen;
+	width: 500px;
+	margin-left: 50px; 
+	display: inline-block;
+}
+
 .resource {
 	background: darkgreen;
 	margin-left: 10px;
 }
 
-.editable {
+textarea, input {
 	display: inline-block;
-	min-width: 50px;
 	background: lightgreen;
+	min-width: 50px;
+	border: none;
+}
+
+textarea:focus, 
+input:focus{
+    outline: 0;
 }
 
 

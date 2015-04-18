@@ -6,7 +6,7 @@ class CheckPointsView extends React.Component {
 	render(){
 		var waypoints = this.props.state;
 	  	return (
-	  		<section className="waypoints" style={{background: 'lightgreen', width: '500px', marginLeft: '50px', display: 'inline-block'}}>
+	  		<section className="checkpointsView">
 	  			<h2> Checkpoints: </h2>
 	  			{ waypoints.checkpoints.map((value, index) => <CheckPoint key={ index } index={ index } state={ value }/>) }
 	   		</section>

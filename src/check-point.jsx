@@ -20,8 +20,7 @@ class CheckPoint extends React.Component {
 	  				insideIndex.push(index); 
 
 	  				return <Resource key={ index } index={ insideIndex } state={ value } setValue={setValue}/>
-	  				}
-	  			) }
+	  			})}
 	   		</div>
 	  	)
   	}

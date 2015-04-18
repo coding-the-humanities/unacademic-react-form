@@ -21,8 +21,24 @@ class Site extends React.Component {
 		}
 	}
 	setValue(index, event){
-		console.log(index);
-		console.log(event.target.value);
+		var newValue = event.target.value;
+		if (index.length == 1){
+			this.setState(function(state){
+				state.userData.waypoints[index[0]].title = newValue;
+				console.log(state);
+			});
+		} else if (index.length == 2){
+			this.setState(function(state){
+				state.userData.waypoints[index[0]].checkpoints[index[1]].title = newValue;
+				console.log(state);
+			});
+		} else if (index.length == 3){
+			this.setState(function(state){
+				state.userData.waypoints[index[0]].checkpoints[index[1]].resources[index[2]].title = newValue;
+				console.log(state);
+			});
+		}
+
 	}
 	render(){
 		var userData = this.state.userData,

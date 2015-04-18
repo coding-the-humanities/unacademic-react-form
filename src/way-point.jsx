@@ -2,12 +2,11 @@ import React from 'react';
 
 class WayPoint extends React.Component {
 	render(){
-		var waypoint = this.props.state;
+		var waypoint = this.props.state,
+			index = this.props.index;
 	  	return (
 	  		<div className="waypoint">
-	  			<h3>title: {waypoint.title}</h3>
-	  			<p>summary: {waypoint.summary}</p>
-	  			<p>description: {waypoint.description}</p>
+	  			<h3>{index}:{waypoint.title}</h3>
 	   		</div>
 	  	)
   	}

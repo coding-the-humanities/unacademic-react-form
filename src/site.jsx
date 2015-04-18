@@ -24,9 +24,9 @@ class Site extends React.Component {
 	  	return (
 	  		<main className="site" style={{background: 'lightgrey', width: '800px', padding: '10px', margin: '0 auto'}}>
 	  			
-	  			<h1 contentEditable="true">Hello {userData.name}</h1>
+	  			<h1 contentEditable="true">Welcome to Unacademic</h1>
 
-	  			<LoginView />
+	  			<LoginView state={userData}/>
 	  			<WayPointsView state={userData} />
 	  			<CheckPointsView state={userData.waypoints[activeWaypoint]} />
 	   		</main>

@@ -2,9 +2,10 @@ import React from 'react';
 
 class LoginView extends React.Component {
 	render(){
+		var userData = this.props.state;
 	  	return (
 	  		<section className="loginView" style={{background: 'pink'}}>
-	  			<p>Im the login view!</p>
+	  			<p>Youre logged in as: {userData.name}</p>
 	   		</section>
 	  	)
   	}

@@ -2,9 +2,11 @@ import React from 'react';
 
 class Resource extends React.Component {
 	render(){
+		var resource = this.props.state;
+		console.log(resource);
 	  	return (
 	  		<div className="waypoints" style={{background: 'darkgreen', marginLeft: '10px'}}>
-	  			<p>With a resource</p> 
+	  			<h4>{resource.title}</h4> 
 	   		</div>
 	  	)
   	}

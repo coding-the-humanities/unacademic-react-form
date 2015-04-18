@@ -10,9 +10,9 @@ class Resource extends React.Component {
 
 	  	return (
 	  		<div className="resource">
-	  			<h4>title: <input className="editable" defaultValue={resource.title} onChange={ setValue.bind(this, outsideIndex) }></input></h4>
-	  			<p>author: <input className="editable" defaultValue={resource.author} onChange={ setValue.bind(this, outsideIndex) }></input></p>
-	  			<p>url: <input className="editable" defaultValue={resource.url} onChange={ setValue.bind(this, outsideIndex) }></input></p> 
+	  			<h4>title: <input className="editable" defaultValue={resource.title} onChange={ setValue.bind(this, outsideIndex, "title") }></input></h4>
+	  			<p>author: <input className="editable" defaultValue={resource.author} onChange={ setValue.bind(this, outsideIndex, "author") }></input></p>
+	  			<p>url: <input className="editable" defaultValue={resource.url} onChange={ setValue.bind(this, outsideIndex, "url") }></input></p> 
 	   		</div>
 	  	)
   	}

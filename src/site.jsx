@@ -20,21 +20,25 @@ class Site extends React.Component {
 			activeWaypoint: 0,
 		}
 	}
-	setValue(index, event){
-		var newValue = event.target.value;
+	setValue(index, fieldType, event){
+		console.log(index);
+		console.log(fieldType);
+		console.log(event.target.value);
+		var newValue = event.target.value,
+			fieldType = fieldType;
 		if (index.length == 1){
 			this.setState(function(state){
-				state.userData.waypoints[index[0]].title = newValue;
+				state.userData.waypoints[index[0]][fieldType] = newValue;
 				console.log(state);
 			});
 		} else if (index.length == 2){
 			this.setState(function(state){
-				state.userData.waypoints[index[0]].checkpoints[index[1]].title = newValue;
+				state.userData.waypoints[index[0]].checkpoints[index[1]][fieldType] = newValue;
 				console.log(state);
 			});
 		} else if (index.length == 3){
 			this.setState(function(state){
-				state.userData.waypoints[index[0]].checkpoints[index[1]].resources[index[2]].title = newValue;
+				state.userData.waypoints[index[0]].checkpoints[index[1]].resources[index[2]][fieldType] = newValue;
 				console.log(state);
 			});
 		}

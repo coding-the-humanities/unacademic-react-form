@@ -4,7 +4,8 @@ import Firebase from '../node_modules/firebase/lib/firebase-web.js';
 import CheckPointsView from './check-points-view.jsx';
 import WayPointsView from './way-points-view.jsx';
 import LoginView from './login.jsx';
-import data from './dataEmpty.jsx';
+import data from './models/dataEmpty.jsx';
+import model from './models/model.jsx';
 
 import css from './styles/main.css';
 
@@ -20,10 +21,12 @@ class Site extends React.Component {
 	}
 
 	componentWillMount(){
+		// starting up firebase and loading data
 		this.firebaseRef = new Firebase('https://unacademic-form.firebaseio.com/');
 		this.firebaseRef.child('123322').on('value', function(data){
 			this.setState({userData: data.val()});
 		}.bind(this));
+		console.log(model);
 	}
 
 	updateFirebase(){
@@ -62,14 +65,16 @@ class Site extends React.Component {
 		}
 	}
 
-	createOrRemovePoint(index){
+	createOrRemovePoint(index, action){
+
+
 		if (index.length == 0){
 			// Create new waypoint and set it to active when created
 			var waypointCallback = function (){
 				this.setActiveWaypoint(this.state.userData.waypoints.length-1);
 				this.updateFirebase();
 			};
-			
+
 			this.setState(function(state){
 				state.userData.waypoints.push({
 			        "id": 1,

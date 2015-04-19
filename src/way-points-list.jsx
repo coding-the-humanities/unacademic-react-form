@@ -1,7 +1,5 @@
 import React from 'react';
 
-import WayPoint from './way-point.jsx';
-
 class WayPointsView extends React.Component {
 	render(){
 		var userData = this.props.state,
@@ -12,7 +10,7 @@ class WayPointsView extends React.Component {
 	  		<section className="waypointsView">
 	  			<h2>Waypoints:</h2>
 	  			{ userData.waypoints.map((value, index) => 
-	  				<WayPoint key={ index } index={ index } state={ value } setActiveWaypoint={setActiveWaypoint} />
+  					<h3 className="waypoint" onClick={ setActiveWaypoint.bind(this, index)}> {index}:{value.title} </h3>
 	  			) }
 	  			<button onClick={createOrRemovePoint.bind(this, [], 'create')}>add waypoint</button>
 	   		</section>

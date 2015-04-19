@@ -1,7 +1,6 @@
 import React from 'react';
 
 import CheckPoint from './check-point.jsx';
-import WaypointChangable from './way-point-changable.jsx';
 
 class CheckPointsView extends React.Component {
 	render(){

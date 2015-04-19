@@ -1,6 +1,6 @@
 import React from 'react';
 
-import CheckPoint from './checkpoint.jsx';
+import Checkpoint from './checkpoint.jsx';
 
 class Form extends React.Component {
 	render(){
@@ -27,7 +27,7 @@ class Form extends React.Component {
 	  				var insideIndex = JSON.parse(JSON.stringify(outsideIndex)); 
 	  				insideIndex.push(index); 
 
-	  				return (<CheckPoint key={ index } index={ insideIndex } state={ value } setValue={setValue} createOrRemovePoint={createOrRemovePoint}/>) 
+	  				return (<Checkpoint key={ index } index={ insideIndex } state={ value } setValue={setValue} createOrRemovePoint={createOrRemovePoint}/>) 
 	  				}
 	  			)}
 	  			<button onClick={createOrRemovePoint.bind(this, outsideIndex, 'create')}>add checkpoint</button>

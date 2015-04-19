@@ -4,7 +4,7 @@ import Firebase from '../../node_modules/firebase/lib/firebase-web.js';
 import Form from './form/form.jsx';
 import WaypointsList from './waypoints-list.jsx';
 import Login from './login.jsx';
-import model from '../models/model.jsx';
+import Model from '../models/model.jsx';
 
 import css from '../styles/main.css';
 
@@ -72,19 +72,19 @@ class Site extends React.Component {
 					this.updateFirebase();
 				};
 				this.setState(function(state){
-					state.userData.waypoints.push( new model.Waypoint(1, 'Zaturrby') );
+					state.userData.waypoints.push( new Model.Waypoint(1, 'Zaturrby') );
 					return {userData: state.userData};
 				}, waypointCallback);
 			} else if (index.length == 1){
 				// create new checkpoint
 				this.setState(function(state){
-					state.userData.waypoints[index[0]].checkpoints.push(new model.Checkpoint(1));
+					state.userData.waypoints[index[0]].checkpoints.push(new Model.Checkpoint(1));
 					return {userData: state.userData};
 				}, this.updateFirebase);
 			} else if (index.length == 2){
 				// create new resource
 				this.setState(function(state){
-					state.userData.waypoints[index[0]].checkpoints[index[1]].resources.push(new model.Resource(1));
+					state.userData.waypoints[index[0]].checkpoints[index[1]].resources.push(new Model.Resource(1));
 					return {userData: state.userData};
 				}, this.updateFirebase);
 			}

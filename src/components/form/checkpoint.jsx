@@ -1,7 +1,7 @@
 import React from 'react';
 import Resource from './resource.jsx';
 
-class CheckPoint extends React.Component {
+class Checkpoint extends React.Component {
 	render(){
 		var setValue = this.props.setValue,
 			checkpoint = this.props.state,
@@ -26,4 +26,4 @@ class CheckPoint extends React.Component {
   	}
 }
 
-export default CheckPoint;
+export default Checkpoint;

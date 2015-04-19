@@ -9,33 +9,26 @@ import data from './dataEmpty.jsx';
 import css from './styles/main.css';
 
 class Site extends React.Component {
-	componentWillMount(){
-		this.firebaseRef = new Firebase('https://unacademic-form.firebaseio.com/');
-
-		// // updating firebase
-		// var userData = this.state.userData;
-		// this.firebaseRef.update({[userData.id]: userData});
-
-		// // getting from firebase
-		this.firebaseRef.child('123322').on('value', function(data){
-			this.setState({userData: data.val()}, function(){console.log(this.state)});
-			this.setState({activeWaypoint: 0});
-		}.bind(this));
-		// this.setState({userData: data});
-		// this.setState({activeWaypoint: 0});
-	}
 
 	constructor(props){
 		super(props);
 		this.state = {
-			userData: {
-				id: 123322,
-				name: 'Mr. Snotneus',
-				email: 'somethingelse@example.com',
-				waypoints: data
-			},
+			userData: "",
 			activeWaypoint: 0,
 		}
+	}
+
+	componentWillMount(){
+		this.firebaseRef = new Firebase('https://unacademic-form.firebaseio.com/');
+		this.firebaseRef.child('123322').on('value', function(data){
+			this.setState({userData: data.val()}, function(){console.log(this.state)});
+			this.setState({activeWaypoint: 0});
+		}.bind(this));
+	}
+
+	updateFirebase(){
+		var userData = this.state.userData;
+		this.firebaseRef.update({[userData.id]: userData}, function(){console.log("database updated")});
 	}
 
 	setValue(index, fieldType, event){
@@ -45,17 +38,17 @@ class Site extends React.Component {
 			this.setState(function(state){
 				state.userData.waypoints[index[0]][fieldType] = newValue;
 				return {userData: state.userData};
-			});
+			}, this.updateFirebase);
 		} else if (index.length == 2){
 			this.setState(function(state){
 				state.userData.waypoints[index[0]].checkpoints[index[1]][fieldType] = newValue;
 				return {userData: state.userData};
-			});
+			}, this.updateFirebase);
 		} else if (index.length == 3){
 			this.setState(function(state){
 				state.userData.waypoints[index[0]].checkpoints[index[1]].resources[index[2]][fieldType] = newValue;
 				return {userData: state.userData};
-			});
+			}, this.updateFirebase);
 		}
 	}
 
@@ -93,7 +86,7 @@ class Site extends React.Component {
 			        ]
 				});
 				return {userData: state.userData};
-			}, waypointCallback);
+			}, this.updateFirebase);
 		} else if (index.length == 1){
 			this.setState(function(state){
 				state.userData.waypoints[index[0]].checkpoints.push({
@@ -112,7 +105,7 @@ class Site extends React.Component {
 	                ]
 				});
 				return {userData: state.userData};
-			});
+			}, this.updateFirebase);
 		} else if (index.length == 2){
 			this.setState(function(state){
 				state.userData.waypoints[index[0]].checkpoints[index[1]].resources.push({
@@ -122,7 +115,7 @@ class Site extends React.Component {
                     "url": ""
 				});
 				return {userData: state.userData};
-			});
+			}, this.updateFirebase);
 		}
 	}
 
@@ -137,17 +130,21 @@ class Site extends React.Component {
 			activeWaypoint = this.state.activeWaypoint,
 			setValue = this.setValue;
 
-	  	return (
-	  		<main className="siteContainer">
-	  			
-	  			<h1>Unacademic Temporary Curating Interface</h1>
+		if (this.state.userData != ""){
+		  	return (
+		  		<main className="siteContainer">
+		  			
+		  			<h1>Unacademic Temporary Curating Interface</h1>
 
-	  			<LoginView state={userData}/>
-	  			<WayPointsView state={userData} setActiveWaypoint={this.setActiveWaypoint.bind(this)} createNewPoint={this.createNewPoint.bind(this)}/>
-	  			<CheckPointsView state={userData.waypoints[activeWaypoint]} index={[activeWaypoint]} setValue={setValue.bind(this)} createNewPoint={this.createNewPoint.bind(this)}/>
-	   		
-	   		</main>
-	  	)
+		  			<LoginView state={userData}/>
+		  			<WayPointsView state={userData} setActiveWaypoint={this.setActiveWaypoint.bind(this)} createNewPoint={this.createNewPoint.bind(this)}/>
+		  			<CheckPointsView state={userData.waypoints[activeWaypoint]} index={[activeWaypoint]} setValue={setValue.bind(this)} createNewPoint={this.createNewPoint.bind(this)}/>
+		   		
+		   		</main>
+		  	)
+		} else {
+			return <h1>loaaading!</h1>
+		}
   	}
 }
 

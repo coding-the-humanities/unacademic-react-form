@@ -81,32 +81,13 @@ class Site extends React.Component {
 		} else if (index.length == 1){
 			// create new checkpoint
 			this.setState(function(state){
-				state.userData.waypoints[index[0]].checkpoints.push({
-	                "id": 1,
-	                "title": "",
-	                "description": [
-	                    ""
-	                ],
-	                "resources": [
-	                    {
-	                        "id": 1,
-	                        "title": "",
-	                        "author": "",
-	                        "url": ""
-	                    }
-	                ]
-				});
+				state.userData.waypoints[index[0]].checkpoints.push(new model.Checkpoint(1));
 				return {userData: state.userData};
 			}, this.updateFirebase);
 		} else if (index.length == 2){
 			// create new resource
 			this.setState(function(state){
-				state.userData.waypoints[index[0]].checkpoints[index[1]].resources.push({
-                    "id": 1,
-                    "title": "",
-                    "author": "",
-                    "url": ""
-				});
+				state.userData.waypoints[index[0]].checkpoints[index[1]].resources.push(new model.Resource(1));
 				return {userData: state.userData};
 			}, this.updateFirebase);
 		}

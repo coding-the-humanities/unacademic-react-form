@@ -12,11 +12,11 @@ class Form extends React.Component {
 	  	return (
 	  		<section className="Form">
 
-	  			<div className="waypointChangable">
+	  			<div className="waypoint">
 		  			<h2>Current waypoint: </h2>
-		  			<h3>title: <input className="editable" value={waypoint.title} onChange={ setValue.bind(this, outsideIndex, "title") }></input></h3>
-		  			<p>summary: <input className="editable" value={waypoint.summary} onChange={ setValue.bind(this, outsideIndex, "summary") }></input></p>
-		  			<p>description: <input className="editable" value={waypoint.description} onChange={ setValue.bind(this, outsideIndex, "description") }></input></p>
+		  			<h3>title: <input value={waypoint.title} onChange={ setValue.bind(this, outsideIndex, "title") }></input></h3>
+		  			<p>summary: <input value={waypoint.summary} onChange={ setValue.bind(this, outsideIndex, "summary") }></input></p>
+		  			<p>description: <input value={waypoint.description} onChange={ setValue.bind(this, outsideIndex, "description") }></input></p>
 		  			<button onClick={createOrRemovePoint.bind(this, outsideIndex, 'remove')}>remove waypoint</button>
 	   			</div>
 

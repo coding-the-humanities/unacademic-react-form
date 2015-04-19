@@ -17,7 +17,7 @@ class WaypointsList extends React.Component {
 
 		 				userData.waypoints.map((value, index) => 
 			  				<div key={index}>
-			  					<button className="waypoint" onClick={ setActiveWaypoint.bind(this, index)}> {index}:{value.title} </button>
+			  					<button className="waypointInList" onClick={ setActiveWaypoint.bind(this, index)}> {index}:{value.title} </button>
 				  				<button onClick={createOrRemovePoint.bind(this, [index], 'remove')}>remove waypoint</button>
 			  				</div>
 		  				) 

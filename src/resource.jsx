@@ -5,9 +5,7 @@ class Resource extends React.Component {
 		var resource = this.props.state,
 			setValue = this.props.setValue,
 			outsideIndex = this.props.index;
-
-		// function(e){console.table(e.target.value);};
-
+			
 	  	return (
 	  		<div className="resource">
 	  			<h4>title: <input className="editable" value={resource.title} onChange={ setValue.bind(this, outsideIndex, "title") }></input></h4>

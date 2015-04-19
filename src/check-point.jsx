@@ -19,6 +19,7 @@ class CheckPoint extends React.Component {
 
 	  				return <Resource key={ index } index={ insideIndex } state={ value } setValue={setValue}/>
 	  			})}
+	  			<button>add resource</button>
 	   		</div>
 	  	)
   	}

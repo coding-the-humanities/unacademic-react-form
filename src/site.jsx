@@ -40,7 +40,6 @@ class Site extends React.Component {
 				return {userData: state.userData};
 			});
 		}
-		console.log(this.state);
 	}
 
 	setActiveWaypoint(index, event){
@@ -53,6 +52,7 @@ class Site extends React.Component {
 		var userData = this.state.userData,
 			activeWaypoint = this.state.activeWaypoint,
 			setValue = this.setValue;
+
 	  	return (
 	  		<main className="siteContainer">
 	  			

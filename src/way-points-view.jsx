@@ -10,6 +10,7 @@ class WayPointsView extends React.Component {
 	  		<section className="waypointsView">
 	  			<h2>Waypoints:</h2>
 	  			{ userData.waypoints.map((value, index) => <WayPoint key={ index } index={ index } state={ value } setActiveWaypoint={setActiveWaypoint}/>) }
+	  			<button>add waypoint</button>
 	   		</section>
 	  	)
   	}

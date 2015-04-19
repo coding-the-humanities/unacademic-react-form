@@ -1,4 +1,5 @@
 import React from 'react';
+import Firebase from '../node_modules/firebase/lib/firebase-web.js';
 
 import CheckPointsView from './check-points-view.jsx';
 import WayPointsView from './way-points-view.jsx';
@@ -8,11 +9,17 @@ import data from './data.jsx';
 import css from './styles/main.css';
 
 class Site extends React.Component {
+	componentWillMount(){
+		var userData = this.state.userData;
+		this.firebaseRef = new Firebase('https://unacademic-form.firebaseio.com/');
+		this.firebaseRef.set({[userData.id]: userData});
+	}
+
 	constructor(props){
 		super(props);
 		this.state = {
 			userData: {
-				id: 1,
+				id: 1233,
 				name: 'Mr. Snotneus',
 				email: 'somethingelse@example.com',
 				waypoints: data

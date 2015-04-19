@@ -14,7 +14,8 @@ var config = {
       './src/site.jsx'
     ],
     vendor: [
-      'react'
+      'react',
+      'firebase/lib/firebase-web.js'
     ]
   },
   output: {

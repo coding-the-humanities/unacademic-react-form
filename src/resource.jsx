@@ -4,7 +4,7 @@ class Resource extends React.Component {
 	render(){
 		var resource = this.props.state,
 			setValue = this.props.setValue,
-			outsideIndex = this.props.index;
+			outsideIndex = this.props.index
 			
 	  	return (
 	  		<div className="resource">

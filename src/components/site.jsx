@@ -111,7 +111,6 @@ class Site extends React.Component {
 
 
 		else if (action == 'remove'){
-			console.log(index);
 			if (index.length == 1){
 				// Remove the clicked waypoint
 				this.setState(function(state){

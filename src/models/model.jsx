@@ -1,35 +1,33 @@
-var model = {
-    resource: {
-        "id": 1,
-        "title": "",
-        "author": "",
-        "url": ""
-    },
-    checkpoint: {
-        "id": 1,
-        "title": "",
-        "description": [
-            ""
-        ],
-        "resources": [this.resource]
-    },
-    waypoint: {
-        "id": 1,
-        "title": "",
-        "image": "http://lorempixel.com/640/480/nature",
-        "curator": "Yeehaa",
-        "summary": "",
-        "description": [
-            ""
-        ],
-        "checkpoints": [this.checkpoint]
-    },
-    user: {
-        "id": "",
-        "email": "",
-        "name": "",
-        "waypoints": [this.waypoint]
-    }
+class Resource {
+  constructor(id){
+    this.id = id;
+    this.title = "";
+    this.author = "";
+    this.url = "";
+  }
+}
+
+class Checkpoint {
+  constructor(id) {
+    this.id = id;
+    this.title = "";
+    this.description = "";
+    this.resources = new Resource(1);
+  };
 };
 
-export default model;
+class Waypoint {
+  constructor(id, curator) {
+    this.id = id;
+    this.title = "";
+    this.image = "";
+    this.curator = curator;
+    this.summary = "";
+    this.description = "";
+    this.checkpoints = new Checkpoint(1);
+  };
+};
+
+export default { Resource: Resource, Checkpoint: Checkpoint, Waypoint: Waypoint};
+
+

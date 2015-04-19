@@ -3,7 +3,10 @@
   "version": "0.0.1",
   "description": "",
   "main": "bundle.js",
-  "author": ["Jan Hein Hoogstad", "Robert-Jan Korteschiel"],
+  "author": [
+    "Jan Hein Hoogstad",
+    "Robert-Jan Korteschiel"
+  ],
   "license": "MIT",
   "engines": {
     "iojs": ">= 1.6.2"
@@ -37,6 +40,7 @@
     "postcss-loader": "^0.3.0",
     "postcss-nested": "^0.2.1",
     "postcss-simple-vars": "^0.2.4",
+    "ramda": "^0.13.0",
     "react": "^0.13.0",
     "react-hot-loader": "^1.1.5",
     "react-tools": "^0.13.0-rc1",

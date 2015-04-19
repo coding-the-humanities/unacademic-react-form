@@ -1,6 +1,6 @@
 import React from 'react';
 
-class LoginView extends React.Component {
+class Login extends React.Component {
 	render(){
 		var userData = this.props.state;
 	  	return (
@@ -11,4 +11,4 @@ class LoginView extends React.Component {
   	}
 }
 
-export default LoginView;
+export default Login;

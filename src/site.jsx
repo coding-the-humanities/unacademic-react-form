@@ -4,22 +4,32 @@ import Firebase from '../node_modules/firebase/lib/firebase-web.js';
 import CheckPointsView from './check-points-view.jsx';
 import WayPointsView from './way-points-view.jsx';
 import LoginView from './login.jsx';
-import data from './data.jsx';
+import data from './dataEmpty.jsx';
 
 import css from './styles/main.css';
 
 class Site extends React.Component {
 	componentWillMount(){
-		var userData = this.state.userData;
 		this.firebaseRef = new Firebase('https://unacademic-form.firebaseio.com/');
-		this.firebaseRef.set({[userData.id]: userData});
+
+		// // updating firebase
+		// var userData = this.state.userData;
+		// this.firebaseRef.update({[userData.id]: userData});
+
+		// // getting from firebase
+		this.firebaseRef.child('123322').on('value', function(data){
+			this.setState({userData: data.val()}, function(){console.log(this.state)});
+			this.setState({activeWaypoint: 0});
+		}.bind(this));
+		// this.setState({userData: data});
+		// this.setState({activeWaypoint: 0});
 	}
 
 	constructor(props){
 		super(props);
 		this.state = {
 			userData: {
-				id: 1233,
+				id: 123322,
 				name: 'Mr. Snotneus',
 				email: 'somethingelse@example.com',
 				waypoints: data

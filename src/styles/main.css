@@ -9,7 +9,7 @@
 	margin: 0 auto;
 }
 
-.waypointsList {
+.WaypointsList {
 	background: lightblue;
 	width: 200px; 
 	float: left;
@@ -20,7 +20,7 @@
 	margin-left: 10px;
 }
 
-.checkpointsView {
+.form {
 	background: lightgreen;
 	width: 500px;
 	margin-left: 50px; 

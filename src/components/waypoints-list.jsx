@@ -1,13 +1,13 @@
 import React from 'react';
 
-class WayPointsList extends React.Component {
+class WaypointsList extends React.Component {
 	render(){
 		var userData = this.props.state,
 			setActiveWaypoint = this.props.setActiveWaypoint,
 			createOrRemovePoint = this.props.createOrRemovePoint;
 			
 	  	return (
-	  		<section className="WayPointsList">
+	  		<section className="WaypointsList">
 	  			<h2>Waypoints:</h2>
 	  			{ userData.waypoints.map((value, index) => 
   					<h3 className="waypoint" key={index} onClick={ setActiveWaypoint.bind(this, index)}> {index}:{value.title} </h3>
@@ -18,4 +18,4 @@ class WayPointsList extends React.Component {
   	}
 }
 
-export default WayPointsList;
+export default WaypointsList;

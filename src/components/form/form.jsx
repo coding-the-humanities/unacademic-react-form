@@ -1,8 +1,8 @@
 import React from 'react';
 
-import CheckPoint from './check-point.jsx';
+import CheckPoint from './checkpoint.jsx';
 
-class CheckPointsView extends React.Component {
+class Form extends React.Component {
 	render(){
 		var setValue = this.props.setValue,
 			waypoint = this.props.state,
@@ -10,7 +10,7 @@ class CheckPointsView extends React.Component {
 			createOrRemovePoint = this.props.createOrRemovePoint;
 
 	  	return (
-	  		<section className="checkpointsView">
+	  		<section className="Form">
 
 	  			<div className="waypointChangable">
 		  			<h2>Current waypoint: </h2>
@@ -36,4 +36,4 @@ class CheckPointsView extends React.Component {
   	}
 }
 
-export default CheckPointsView;
+export default Form;

@@ -1,9 +1,9 @@
 import React from 'react';
 import Firebase from '../../node_modules/firebase/lib/firebase-web.js';
 
-import CheckPointsView from './form/waypoint.jsx';
-import WayPointsList from './way-points-list.jsx';
-import LoginView from './login.jsx';
+import Form from './form/form.jsx';
+import WaypointsList from './waypoints-list.jsx';
+import Login from './login.jsx';
 import model from '../models/model.jsx';
 
 import css from '../styles/main.css';
@@ -110,9 +110,9 @@ class Site extends React.Component {
 		  			
 		  			<h1>Unacademic temporary unstyled curating interface</h1>
 
-		  			<LoginView state={userData}/>
-		  			<WayPointsList state={userData} setActiveWaypoint={this.setActiveWaypoint.bind(this)} createOrRemovePoint={this.createOrRemovePoint.bind(this)}/>
-		  			<CheckPointsView state={userData.waypoints[activeWaypoint]} index={[activeWaypoint]} setValue={this.setValue.bind(this)} createOrRemovePoint={this.createOrRemovePoint.bind(this)}/>
+		  			<Login state={userData}/>
+		  			<WaypointsList state={userData} setActiveWaypoint={this.setActiveWaypoint.bind(this)} createOrRemovePoint={this.createOrRemovePoint.bind(this)}/>
+		  			<Form state={userData.waypoints[activeWaypoint]} index={[activeWaypoint]} setValue={this.setValue.bind(this)} createOrRemovePoint={this.createOrRemovePoint.bind(this)}/>
 		   		
 		   		</main>
 		  	)

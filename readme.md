@@ -1,23 +1,6 @@
 
-Needs several elements
+Unacademic React Form
 
--------
+=====
 
--> Login view
-
--------
-
--> Waypoints view
-
-Single waypoint
-
------
-
--> Checkpoints view
-
-Single Checkpoint
-
-Single resource
-
-------
 

@@ -7,8 +7,6 @@ class CheckPoint extends React.Component {
 			checkpoint = this.props.state,
 			outsideIndex = this.props.index;
 
-		// console.log(this.props.index);
-
 	  	return (
 	  		<div className="checkpoint">
 	  			<h3> title: <input className="editable" defaultValue={checkpoint.title} onChange={ setValue.bind(this, outsideIndex, "title") }></input></h3>

@@ -20,42 +20,46 @@ class Site extends React.Component {
 			activeWaypoint: 0,
 		}
 	}
+
 	setValue(index, fieldType, event){
-		console.log(index);
-		console.log(fieldType);
-		console.log(event.target.value);
 		var newValue = event.target.value,
 			fieldType = fieldType;
 		if (index.length == 1){
 			this.setState(function(state){
 				state.userData.waypoints[index[0]][fieldType] = newValue;
-				console.log(state);
+				return {userData: state.userData};
 			});
 		} else if (index.length == 2){
 			this.setState(function(state){
 				state.userData.waypoints[index[0]].checkpoints[index[1]][fieldType] = newValue;
-				console.log(state);
+				return {userData: state.userData};
 			});
 		} else if (index.length == 3){
 			this.setState(function(state){
 				state.userData.waypoints[index[0]].checkpoints[index[1]].resources[index[2]][fieldType] = newValue;
-				console.log(state);
+				return {userData: state.userData};
 			});
 		}
-
+		console.log(this.state);
 	}
+
+	setActiveWaypoint(index, event){
+		this.setState(function(state){
+			return {activeWaypoint: index};
+		});
+	}
+
 	render(){
 		var userData = this.state.userData,
 			activeWaypoint = this.state.activeWaypoint,
 			setValue = this.setValue;
-			this.hi = 10;
 	  	return (
 	  		<main className="siteContainer">
 	  			
 	  			<h1>Unacademic Temporary Curating Interface</h1>
 
 	  			<LoginView state={userData}/>
-	  			<WayPointsView state={userData} />
+	  			<WayPointsView state={userData} setActiveWaypoint={this.setActiveWaypoint.bind(this)}/>
 	  			<CheckPointsView state={userData.waypoints[activeWaypoint]} index={[activeWaypoint]} setValue={setValue.bind(this)}/>
 	   		
 	   		</main>

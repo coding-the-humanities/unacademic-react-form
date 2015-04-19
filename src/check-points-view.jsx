@@ -9,6 +9,8 @@ class CheckPointsView extends React.Component {
 			waypoint = this.props.state,
 			outsideIndex = this.props.index;
 
+		console.log(waypoint);
+
 	  	return (
 	  		<section className="checkpointsView">
 	  			<WaypointChangable state={waypoint} setValue={setValue} index={outsideIndex}/>

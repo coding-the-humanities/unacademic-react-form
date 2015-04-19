@@ -12,10 +12,16 @@ class CheckPointsView extends React.Component {
 
 	  	return (
 	  		<section className="checkpointsView">
-	  			<WaypointChangable state={waypoint} setValue={setValue} index={outsideIndex}/>
+
+	  			<div className="waypointChangable">
+		  			<h2>Current waypoint: </h2>
+		  			<h3>title: <input className="editable" value={waypoint.title} onChange={ setValue.bind(this, outsideIndex, "title") }></input></h3>
+		  			<p>summary: <input className="editable" value={waypoint.summary} onChange={ setValue.bind(this, outsideIndex, "summary") }></input></p>
+		  			<p>description: <input className="editable" value={waypoint.description} onChange={ setValue.bind(this, outsideIndex, "description") }></input></p>
+	   			</div>
+
 	  			<h2> Checkpoints: </h2>
 	  			
-
 	  			{ waypoint.checkpoints.map((value, index) => {
 
 	  				// make deepcopy and push -- Can without doubt be done better

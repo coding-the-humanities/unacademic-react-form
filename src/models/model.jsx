@@ -12,7 +12,7 @@ class Checkpoint {
     this.id = id;
     this.title = "";
     this.description = "";
-    this.resources = new Resource(1);
+    this.resources = [new Resource(1)];
   };
 };
 
@@ -24,7 +24,7 @@ class Waypoint {
     this.curator = curator;
     this.summary = "";
     this.description = "";
-    this.checkpoints = new Checkpoint(1);
+    this.checkpoints = [new Checkpoint(1)];
   };
 };
 

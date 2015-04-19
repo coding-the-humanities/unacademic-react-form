@@ -26,7 +26,6 @@ class Site extends React.Component {
 		this.firebaseRef.child('123322').on('value', function(data){
 			this.setState({userData: data.val()});
 		}.bind(this));
-		console.log(model);
 	}
 
 	updateFirebase(){
@@ -76,33 +75,7 @@ class Site extends React.Component {
 			};
 
 			this.setState(function(state){
-				state.userData.waypoints.push({
-			        "id": 1,
-			        "title": "",
-			        "image": "http://lorempixel.com/640/480/nature",
-			        "curator": "Yeehaa",
-			        "summary": "",
-			        "description": [
-			            ""
-			        ],
-			        "checkpoints": [
-			            {
-			                "id": 1,
-			                "title": "",
-			                "description": [
-			                    ""
-			                ],
-			                "resources": [
-			                    {
-			                        "id": 1,
-			                        "title": "",
-			                        "author": "",
-			                        "url": ""
-			                    }
-			                ]
-			            }
-			        ]
-				});
+				state.userData.waypoints.push( new model.Waypoint(1, "Zaturrby") );
 				return {userData: state.userData};
 			}, waypointCallback);
 		} else if (index.length == 1){

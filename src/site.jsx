@@ -1,7 +1,7 @@
 import React from 'react';
 import Firebase from '../node_modules/firebase/lib/firebase-web.js';
 
-import CheckPointsView from './single-waypoint.jsx';
+import CheckPointsView from './full-waypoint.jsx';
 import WayPointsView from './way-points-list.jsx';
 import LoginView from './login.jsx';
 import model from './models/model.jsx';

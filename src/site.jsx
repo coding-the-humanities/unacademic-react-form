@@ -56,6 +56,7 @@ class Site extends React.Component {
 		if (index.length == 0){
 			var waypointCallback = function (){
 				this.setActiveWaypoint(this.state.userData.waypoints.length-1);
+				this.updateFirebase;
 			};
 			this.setState(function(state){
 				state.userData.waypoints.push({
@@ -86,7 +87,7 @@ class Site extends React.Component {
 			        ]
 				});
 				return {userData: state.userData};
-			}, this.updateFirebase);
+			}, waypointCallback);
 		} else if (index.length == 1){
 			this.setState(function(state){
 				state.userData.waypoints[index[0]].checkpoints.push({
@@ -134,7 +135,7 @@ class Site extends React.Component {
 		  	return (
 		  		<main className="siteContainer">
 		  			
-		  			<h1>Unacademic Temporary Curating Interface</h1>
+		  			<h1>Unacademic temporary unstyled curating interface</h1>
 
 		  			<LoginView state={userData}/>
 		  			<WayPointsView state={userData} setActiveWaypoint={this.setActiveWaypoint.bind(this)} createNewPoint={this.createNewPoint.bind(this)}/>

@@ -22,7 +22,7 @@ class Site extends React.Component {
 	componentWillMount(){
 		// starting up firebase and loading data
 		this.firebaseRef = new Firebase('https://unacademic-form.firebaseio.com/');
-		this.firebaseRef.child('123322').on('value', function(data){
+		this.firebaseRef.child('12334').on('value', function(data){
 			this.setState({userData: data.val()});
 		}.bind(this));
 	}
@@ -34,7 +34,7 @@ class Site extends React.Component {
 		if (this.state.timeout == 0){
 			this.setState({timeout: 1});
 			console.log('submitting');
-			this.firebaseRef.update({[userData.id]: userData}, function(){
+			this.firebaseRef.update({[userData.id+2]: userData}, function(){
 					console.log('database updated');
 					this.setState({timeout: 0});
 				}.bind(this)
@@ -71,18 +71,21 @@ class Site extends React.Component {
 					this.updateFirebase();
 				};
 				this.setState(function(state){
+					if (!state.userData.waypoints){state.userData.waypoints = [];}
 					state.userData.waypoints.push( new Model.Waypoint(1, 'Zaturrby') );
 					return {userData: state.userData};
 				}, this.updateFirebase);
 			} else if (index.length == 1){
 				// create new checkpoint
 				this.setState(function(state){
+					if (!state.userData.waypoints[index[0]].checkpoints){state.userData.waypoints[index[0]].checkpoints = [];}
 					state.userData.waypoints[index[0]].checkpoints.push(new Model.Checkpoint(1));
 					return {userData: state.userData};
 				}, this.updateFirebase);
 			} else if (index.length == 2){
 				// create new resource
 				this.setState(function(state){
+					if (!state.userData.waypoints[index[0]].checkpoints[index[1]].resources){state.userData.waypoints[index[0]].checkpoints[index[1]].resources = [];}
 					state.userData.waypoints[index[0]].checkpoints[index[1]].resources.push(new Model.Resource(1));
 					return {userData: state.userData};
 				}, this.updateFirebase);
@@ -92,27 +95,27 @@ class Site extends React.Component {
 
 
 		else if (action == 'remove'){
-			console.log(index)
+			console.log(index);
 			if (index.length == 1){
 				// Remove the clicked waypoint
 				this.setState(function(state){
 					state.userData.waypoints.splice(index[0], 1);
 					return {userData: state.userData};
-				}, waypointCallback);
+				}, this.updateFirebase);
 			}
 			else if (index.length == 2){
 				// Remove the clicked checkpoint
 				this.setState(function(state){
 					state.userData.waypoints[index[0]].checkpoints.splice(index[1], 1);
 					return {userData: state.userData};
-				}, waypointCallback);
+				}, this.updateFirebase);
 			}
 			else if (index.length == 3){
 				// Remove the clicked checkpoint
 				this.setState(function(state){
 					state.userData.waypoints[index[0]].checkpoints[index[1]].resources.splice(index[2], 1);
 					return {userData: state.userData};
-				}, waypointCallback);
+				}, this.updateFirebase);
 			}
 				
 		}
@@ -138,11 +141,15 @@ class Site extends React.Component {
 		  			<Login state={userData}/>
 		  			<WaypointsList state={userData} setActiveWaypoint={this.setActiveWaypoint.bind(this)} createOrRemovePoint={this.createOrRemovePoint.bind(this)}/>
 		  			{	()=>{
-		  					return (activeWaypoint == userData.waypoints.length) 
-			 				? ( <h1> You just removed the thing you where viewing, now all is empty! Better select another waypoint. </h1>)
-			 				: ( <Form state={userData.waypoints[activeWaypoint]} index={[activeWaypoint]} setValue={this.setValue.bind(this)} createOrRemovePoint={this.createOrRemovePoint.bind(this)}/>);
-		 				}()
-		   			}
+		  					if (userData.waypoints){
+		  						return (activeWaypoint == userData.waypoints.length) 
+			 					? ( <h1> No waypoint selected</h1>)
+			 					: ( <Form state={userData.waypoints[activeWaypoint]} index={[activeWaypoint]} setValue={this.setValue.bind(this)} createOrRemovePoint={this.createOrRemovePoint.bind(this)}/>);
+		  					} else {
+			 					return ( <h1> No waypoints</h1>)
+
+		  					}
+		  			}()}
 		   		</main>
 		  	)
 		} else {

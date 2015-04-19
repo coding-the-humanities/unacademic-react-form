@@ -9,12 +9,21 @@ class WaypointsList extends React.Component {
 	  	return (
 	  		<section className="WaypointsList">
 	  			<h2>Waypoints:</h2>
-	  			{ userData.waypoints.map((value, index) => 
-	  				<div key={index}>
-	  					<h3 className="waypoint" onClick={ setActiveWaypoint.bind(this, index)}> {index}:{value.title} </h3>
-		  				<button onClick={createOrRemovePoint.bind(this, [index], 'remove')}>remove waypoint</button>
-	  				</div>
-	  			) }
+
+  				{()=>{
+					return (typeof userData.waypoints == 'undefined') 
+	 				? ( <p> No checkpoints </p>) 
+	 				: (
+
+		 				userData.waypoints.map((value, index) => 
+			  				<div key={index}>
+			  					<h3 className="waypoint" onClick={ setActiveWaypoint.bind(this, index)}> {index}:{value.title} </h3>
+				  				<button onClick={createOrRemovePoint.bind(this, [index], 'remove')}>remove waypoint</button>
+			  				</div>
+		  				) 
+	  				)
+	  			;}()}
+	  			
 	  			<button onClick={createOrRemovePoint.bind(this, [], 'create')}>add waypoint</button>
 	   		</section>
 	  	)

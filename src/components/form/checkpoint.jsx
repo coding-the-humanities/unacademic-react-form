@@ -14,13 +14,20 @@ class Checkpoint extends React.Component {
 	  			<p> description <input className="editable" value={checkpoint.description} onChange={ setValue.bind(this, outsideIndex, "description") }></input></p>
 		  		<button onClick={createOrRemovePoint.bind(this, outsideIndex, 'remove')}>remove checkpoint</button>
 
-	  			{ checkpoint.resources.map((value, index) => {
+		  		{()=>{
+  					return (typeof checkpoint.resources == 'undefined') 
+		 				? ( <p> No resources </p>) 
+		 				: (
+							checkpoint.resources.map((value, index) => {
 
-	  				var insideIndex = JSON.parse(JSON.stringify(outsideIndex)); 
-	  				insideIndex.push(index); 
+				  				var insideIndex = JSON.parse(JSON.stringify(outsideIndex)); 
+				  				insideIndex.push(index); 
 
-	  				return <Resource key={ index } index={ insideIndex } state={ value } setValue={setValue} createOrRemovePoint={createOrRemovePoint}/>
-	  			})}
+				  				return <Resource key={ index } index={ insideIndex } state={ value } setValue={setValue} createOrRemovePoint={createOrRemovePoint}/>
+				  			})
+		  				)
+		  			;
+	  			}()}
 	  			<button onClick={createOrRemovePoint.bind(this, outsideIndex, 'create')}>add resource</button>
 	   		</div>
 	  	)

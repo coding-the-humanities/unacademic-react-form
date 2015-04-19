@@ -22,22 +22,22 @@ class Site extends React.Component {
 	componentWillMount(){
 		// starting up firebase
 		this.firebaseRef = new Firebase('https://unacademic-form.firebaseio.com/');
-		
-		// authing
-
-		this.firebaseRef.authWithOAuthPopup("github", this.authCallback.bind(this));	
 	}
 
-	authCallback(error, authData) {
+	authWithFirebase(provider){
+		this.firebaseRef.authWithOAuthPopup(provider, this.authWithFirebaseCallback.bind(this));	
+	}
+
+	authWithFirebaseCallback(error, authData) {
 	  	if (error) {
-	    	console.log("Login Failed!", error);
+	    	console.log('Login Failed!', error);
 	  	} else {
-	  		this.getData();
-	    	console.log("Authenticated successfully with payload:", authData);
+	    	console.log('Authenticated successfully with payload:', authData);
+	  		this.getDataFromFirebase(authData);
 	  	}
 	}
 
-	getData(){
+	getDataFromFirebase(authData){
 		this.firebaseRef.child('12334').on('value', function(data){
 			this.setState({userData: data.val()});
 		}.bind(this));
@@ -163,7 +163,6 @@ class Site extends React.Component {
 			 					: ( <Form state={userData.waypoints[activeWaypoint]} index={[activeWaypoint]} setValue={this.setValue.bind(this)} createOrRemovePoint={this.createOrRemovePoint.bind(this)}/>);
 		  					} else {
 			 					return ( <h1> No waypoints</h1>)
-
 		  					}
 		  			}()}
 		   		</main>
@@ -172,7 +171,7 @@ class Site extends React.Component {
 			return (
 				<main>
 			  		<h1>Unacademic temporary unstyled curating interface</h1>
-		  			<Login />
+		  			<Login authWithFirebase={this.authWithFirebase.bind(this)}/>
 		  		</main>
 			)
 		}

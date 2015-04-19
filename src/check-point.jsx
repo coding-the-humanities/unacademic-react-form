@@ -6,7 +6,7 @@ class CheckPoint extends React.Component {
 		var setValue = this.props.setValue,
 			checkpoint = this.props.state,
 			outsideIndex = this.props.index,
-			createNewPoint = this.props.createNewPoint;
+			createOrRemovePoint = this.props.createOrRemovePoint;
 
 	  	return (
 	  		<div className="checkpoint">
@@ -20,7 +20,7 @@ class CheckPoint extends React.Component {
 
 	  				return <Resource key={ index } index={ insideIndex } state={ value } setValue={setValue}/>
 	  			})}
-	  			<button onClick={createNewPoint.bind(this, outsideIndex)}>add resource</button>
+	  			<button onClick={createOrRemovePoint.bind(this, outsideIndex, 'create')}>add resource</button>
 	   		</div>
 	  	)
   	}

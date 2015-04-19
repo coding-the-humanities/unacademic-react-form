@@ -15,20 +15,30 @@ class Site extends React.Component {
 		this.state = {
 			userData: "",
 			activeWaypoint: 0,
+			timeout: 0
 		}
 	}
 
 	componentWillMount(){
 		this.firebaseRef = new Firebase('https://unacademic-form.firebaseio.com/');
 		this.firebaseRef.child('123322').on('value', function(data){
-			this.setState({userData: data.val()}, function(){console.log(this.state)});
-			this.setState({activeWaypoint: 0});
+			this.setState({userData: data.val()});
 		}.bind(this));
 	}
 
 	updateFirebase(){
+		// Update firebase. 
+		// To save connections and data only one update at a time.
 		var userData = this.state.userData;
-		this.firebaseRef.update({[userData.id]: userData}, function(){console.log("database updated")});
+		if (this.state.timeout == 0){
+			this.setState({timeout: 1});
+			console.log('submitting');
+			this.firebaseRef.update({[userData.id]: userData}, function(){
+					console.log("database updated");
+					this.setState({timeout: 0});
+				}.bind(this)
+			);
+		}
 	}
 
 	setValue(index, fieldType, event){
@@ -52,12 +62,14 @@ class Site extends React.Component {
 		}
 	}
 
-	createNewPoint(index){
+	createOrRemovePoint(index){
 		if (index.length == 0){
+			// Create new waypoint and set it to active when created
 			var waypointCallback = function (){
 				this.setActiveWaypoint(this.state.userData.waypoints.length-1);
-				this.updateFirebase;
+				this.updateFirebase();
 			};
+			
 			this.setState(function(state){
 				state.userData.waypoints.push({
 			        "id": 1,
@@ -89,6 +101,7 @@ class Site extends React.Component {
 				return {userData: state.userData};
 			}, waypointCallback);
 		} else if (index.length == 1){
+			// create new checkpoint
 			this.setState(function(state){
 				state.userData.waypoints[index[0]].checkpoints.push({
 	                "id": 1,
@@ -108,6 +121,7 @@ class Site extends React.Component {
 				return {userData: state.userData};
 			}, this.updateFirebase);
 		} else if (index.length == 2){
+			// create new resource
 			this.setState(function(state){
 				state.userData.waypoints[index[0]].checkpoints[index[1]].resources.push({
                     "id": 1,
@@ -138,8 +152,8 @@ class Site extends React.Component {
 		  			<h1>Unacademic temporary unstyled curating interface</h1>
 
 		  			<LoginView state={userData}/>
-		  			<WayPointsView state={userData} setActiveWaypoint={this.setActiveWaypoint.bind(this)} createNewPoint={this.createNewPoint.bind(this)}/>
-		  			<CheckPointsView state={userData.waypoints[activeWaypoint]} index={[activeWaypoint]} setValue={setValue.bind(this)} createNewPoint={this.createNewPoint.bind(this)}/>
+		  			<WayPointsView state={userData} setActiveWaypoint={this.setActiveWaypoint.bind(this)} createOrRemovePoint={this.createOrRemovePoint.bind(this)}/>
+		  			<CheckPointsView state={userData.waypoints[activeWaypoint]} index={[activeWaypoint]} setValue={setValue.bind(this)} createOrRemovePoint={this.createOrRemovePoint.bind(this)}/>
 		   		
 		   		</main>
 		  	)

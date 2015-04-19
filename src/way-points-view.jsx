@@ -6,14 +6,14 @@ class WayPointsView extends React.Component {
 	render(){
 		var userData = this.props.state,
 			setActiveWaypoint = this.props.setActiveWaypoint,
-			createNewPoint = this.props.createNewPoint;
+			createOrRemovePoint = this.props.createOrRemovePoint;
 	  	return (
 	  		<section className="waypointsView">
 	  			<h2>Waypoints:</h2>
 	  			{ userData.waypoints.map((value, index) => 
 	  				<WayPoint key={ index } index={ index } state={ value } setActiveWaypoint={setActiveWaypoint} />
 	  			) }
-	  			<button onClick={createNewPoint.bind(this, [])}>add waypoint</button>
+	  			<button onClick={createOrRemovePoint.bind(this, [], 'create')}>add waypoint</button>
 	   		</section>
 	  	)
   	}

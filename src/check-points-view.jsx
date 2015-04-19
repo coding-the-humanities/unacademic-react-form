@@ -8,7 +8,7 @@ class CheckPointsView extends React.Component {
 		var setValue = this.props.setValue,
 			waypoint = this.props.state,
 			outsideIndex = this.props.index,
-			createNewPoint = this.props.createNewPoint;
+			createOrRemovePoint = this.props.createOrRemovePoint;
 
 	  	return (
 	  		<section className="checkpointsView">
@@ -22,10 +22,10 @@ class CheckPointsView extends React.Component {
 	  				var insideIndex = JSON.parse(JSON.stringify(outsideIndex)); 
 	  				insideIndex.push(index); 
 
-	  				return (<CheckPoint key={ index } index={ insideIndex } state={ value } setValue={setValue} createNewPoint={createNewPoint}/>) 
+	  				return (<CheckPoint key={ index } index={ insideIndex } state={ value } setValue={setValue} createOrRemovePoint={createOrRemovePoint}/>) 
 	  				}
 	  			)}
-	  			<button onClick={createNewPoint.bind(this, outsideIndex)}>add checkpoint</button>
+	  			<button onClick={createOrRemovePoint.bind(this, outsideIndex, 'create')}>add checkpoint</button>
 	   		</section>
 	  	)
   	}

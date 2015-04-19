@@ -9,8 +9,8 @@ class CheckPoint extends React.Component {
 
 	  	return (
 	  		<div className="checkpoint">
-	  			<h3> title: <input className="editable" defaultValue={checkpoint.title} onChange={ setValue.bind(this, outsideIndex, "title") }></input></h3>
-	  			<p> description <input className="editable" defaultValue={checkpoint.description} onChange={ setValue.bind(this, outsideIndex, "description") }></input></p>
+	  			<h3> title: <input className="editable" value={checkpoint.title} onChange={ setValue.bind(this, outsideIndex, "title") }></input></h3>
+	  			<p> description <input className="editable" value={checkpoint.description} onChange={ setValue.bind(this, outsideIndex, "description") }></input></p>
 
 	  			{ checkpoint.resources.map((value, index) => {
 

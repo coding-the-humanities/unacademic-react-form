@@ -16,6 +16,7 @@ class CheckPointsView extends React.Component {
 	  			<WaypointChangable state={waypoint} setValue={setValue} index={outsideIndex}/>
 	  			<h2> Checkpoints: </h2>
 	  			
+
 	  			{ waypoint.checkpoints.map((value, index) => {
 
 	  				// make deepcopy and push -- Can without doubt be done better

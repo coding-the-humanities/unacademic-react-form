@@ -8,9 +8,9 @@ class WaypointChangable extends React.Component {
 	  	return (
 	  		<div className="waypointChangable">
 	  			<h2>Current waypoint: </h2>
-	  			<h3>title: <input className="editable" defaultValue={waypoint.title} onChange={ setValue.bind(this, outsideIndex, "title") }></input></h3>
-	  			<p>summary: <input className="editable" defaultValue={waypoint.summary} onChange={ setValue.bind(this, outsideIndex, "summary") }></input></p>
-	  			<p>description: <input className="editable" defaultValue={waypoint.description} onChange={ setValue.bind(this, outsideIndex, "description") }></input></p>
+	  			<h3>title: <input className="editable" value={waypoint.title} onChange={ setValue.bind(this, outsideIndex, "title") }></input></h3>
+	  			<p>summary: <input className="editable" value={waypoint.summary} onChange={ setValue.bind(this, outsideIndex, "summary") }></input></p>
+	  			<p>description: <input className="editable" value={waypoint.description} onChange={ setValue.bind(this, outsideIndex, "description") }></input></p>
 	   		</div>
 	  	)
   	}

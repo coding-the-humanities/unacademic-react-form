@@ -68,13 +68,12 @@ class Site extends React.Component {
 			if (index.length == 0){
 				// Create new waypoint and set it to active when created
 				var waypointCallback = function (){
-					this.setActiveWaypoint(this.state.userData.waypoints.length-1);
 					this.updateFirebase();
 				};
 				this.setState(function(state){
 					state.userData.waypoints.push( new Model.Waypoint(1, 'Zaturrby') );
 					return {userData: state.userData};
-				}, waypointCallback);
+				}, this.updateFirebase);
 			} else if (index.length == 1){
 				// create new checkpoint
 				this.setState(function(state){
@@ -88,8 +87,34 @@ class Site extends React.Component {
 					return {userData: state.userData};
 				}, this.updateFirebase);
 			}
-		} else if (action == 'remove'){
+		} 
 
+
+
+		else if (action == 'remove'){
+			console.log(index)
+			if (index.length == 1){
+				// Remove the clicked waypoint
+				this.setState(function(state){
+					state.userData.waypoints.splice(index[0], 1);
+					return {userData: state.userData};
+				}, waypointCallback);
+			}
+			else if (index.length == 2){
+				// Remove the clicked checkpoint
+				this.setState(function(state){
+					state.userData.waypoints[index[0]].checkpoints.splice(index[1], 1);
+					return {userData: state.userData};
+				}, waypointCallback);
+			}
+			else if (index.length == 3){
+				// Remove the clicked checkpoint
+				this.setState(function(state){
+					state.userData.waypoints[index[0]].checkpoints[index[1]].resources.splice(index[2], 1);
+					return {userData: state.userData};
+				}, waypointCallback);
+			}
+				
 		}
 	}
 
@@ -112,8 +137,12 @@ class Site extends React.Component {
 
 		  			<Login state={userData}/>
 		  			<WaypointsList state={userData} setActiveWaypoint={this.setActiveWaypoint.bind(this)} createOrRemovePoint={this.createOrRemovePoint.bind(this)}/>
-		  			<Form state={userData.waypoints[activeWaypoint]} index={[activeWaypoint]} setValue={this.setValue.bind(this)} createOrRemovePoint={this.createOrRemovePoint.bind(this)}/>
-		   		
+		  			{	()=>{
+		  					return (activeWaypoint == userData.waypoints.length) 
+			 				? ( <h1> You just removed the thing you where viewing, now all is empty! Better select another waypoint. </h1>)
+			 				: ( <Form state={userData.waypoints[activeWaypoint]} index={[activeWaypoint]} setValue={this.setValue.bind(this)} createOrRemovePoint={this.createOrRemovePoint.bind(this)}/>);
+		 				}()
+		   			}
 		   		</main>
 		  	)
 		} else {

@@ -17,6 +17,7 @@ class Form extends React.Component {
 		  			<h3>title: <input className="editable" value={waypoint.title} onChange={ setValue.bind(this, outsideIndex, "title") }></input></h3>
 		  			<p>summary: <input className="editable" value={waypoint.summary} onChange={ setValue.bind(this, outsideIndex, "summary") }></input></p>
 		  			<p>description: <input className="editable" value={waypoint.description} onChange={ setValue.bind(this, outsideIndex, "description") }></input></p>
+		  			<button onClick={createOrRemovePoint.bind(this, outsideIndex, 'remove')}>remove waypoint</button>
 	   			</div>
 
 	  			<h2> Checkpoints: </h2>

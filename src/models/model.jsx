@@ -28,6 +28,14 @@ class Waypoint {
   };
 };
 
-export default { Resource: Resource, Checkpoint: Checkpoint, Waypoint: Waypoint};
+class User {
+  constructor(id, email, name){
+    this.id = id;
+    this.email = email;
+    this.name = name;
+  };
+};
+
+export default { Resource: Resource, Checkpoint: Checkpoint, Waypoint: Waypoint, User: User};
 
 

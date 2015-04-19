@@ -20,8 +20,24 @@ class Site extends React.Component {
 	}
 
 	componentWillMount(){
-		// starting up firebase and loading data
+		// starting up firebase
 		this.firebaseRef = new Firebase('https://unacademic-form.firebaseio.com/');
+		
+		// authing
+
+		this.firebaseRef.authWithOAuthPopup("github", this.authCallback.bind(this));	
+	}
+
+	authCallback(error, authData) {
+	  	if (error) {
+	    	console.log("Login Failed!", error);
+	  	} else {
+	  		this.getData();
+	    	console.log("Authenticated successfully with payload:", authData);
+	  	}
+	}
+
+	getData(){
 		this.firebaseRef.child('12334').on('value', function(data){
 			this.setState({userData: data.val()});
 		}.bind(this));
@@ -134,7 +150,7 @@ class Site extends React.Component {
 				activeWaypoint = this.state.activeWaypoint;
 
 		  	return (
-		  		<main className="siteContainer">
+		  		<main>
 		  			
 		  			<h1>Unacademic temporary unstyled curating interface</h1>
 
@@ -153,7 +169,12 @@ class Site extends React.Component {
 		   		</main>
 		  	)
 		} else {
-			return <h1>loaaading!</h1>
+			return (
+				<main>
+			  		<h1>Unacademic temporary unstyled curating interface</h1>
+		  			<Login />
+		  		</main>
+			)
 		}
   	}
 }

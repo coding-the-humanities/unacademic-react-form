@@ -1,6 +1,6 @@
 import React from 'react';
 
-import CheckPoint from './form/check-point.jsx';
+import CheckPoint from './check-point.jsx';
 
 class CheckPointsView extends React.Component {
 	render(){

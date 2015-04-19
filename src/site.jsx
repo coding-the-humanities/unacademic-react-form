@@ -4,7 +4,6 @@ import Firebase from '../node_modules/firebase/lib/firebase-web.js';
 import CheckPointsView from './check-points-view.jsx';
 import WayPointsView from './way-points-view.jsx';
 import LoginView from './login.jsx';
-import data from './models/dataEmpty.jsx';
 import model from './models/model.jsx';
 
 import css from './styles/main.css';
@@ -36,7 +35,7 @@ class Site extends React.Component {
 			this.setState({timeout: 1});
 			console.log('submitting');
 			this.firebaseRef.update({[userData.id]: userData}, function(){
-					console.log("database updated");
+					console.log('database updated');
 					this.setState({timeout: 0});
 				}.bind(this)
 			);
@@ -65,31 +64,32 @@ class Site extends React.Component {
 	}
 
 	createOrRemovePoint(index, action){
+		if (action == 'create') {
+			if (index.length == 0){
+				// Create new waypoint and set it to active when created
+				var waypointCallback = function (){
+					this.setActiveWaypoint(this.state.userData.waypoints.length-1);
+					this.updateFirebase();
+				};
+				this.setState(function(state){
+					state.userData.waypoints.push( new model.Waypoint(1, 'Zaturrby') );
+					return {userData: state.userData};
+				}, waypointCallback);
+			} else if (index.length == 1){
+				// create new checkpoint
+				this.setState(function(state){
+					state.userData.waypoints[index[0]].checkpoints.push(new model.Checkpoint(1));
+					return {userData: state.userData};
+				}, this.updateFirebase);
+			} else if (index.length == 2){
+				// create new resource
+				this.setState(function(state){
+					state.userData.waypoints[index[0]].checkpoints[index[1]].resources.push(new model.Resource(1));
+					return {userData: state.userData};
+				}, this.updateFirebase);
+			}
+		} else if (action == 'remove'){
 
-
-		if (index.length == 0){
-			// Create new waypoint and set it to active when created
-			var waypointCallback = function (){
-				this.setActiveWaypoint(this.state.userData.waypoints.length-1);
-				this.updateFirebase();
-			};
-
-			this.setState(function(state){
-				state.userData.waypoints.push( new model.Waypoint(1, "Zaturrby") );
-				return {userData: state.userData};
-			}, waypointCallback);
-		} else if (index.length == 1){
-			// create new checkpoint
-			this.setState(function(state){
-				state.userData.waypoints[index[0]].checkpoints.push(new model.Checkpoint(1));
-				return {userData: state.userData};
-			}, this.updateFirebase);
-		} else if (index.length == 2){
-			// create new resource
-			this.setState(function(state){
-				state.userData.waypoints[index[0]].checkpoints[index[1]].resources.push(new model.Resource(1));
-				return {userData: state.userData};
-			}, this.updateFirebase);
 		}
 	}
 
@@ -100,11 +100,11 @@ class Site extends React.Component {
 	}
 
 	render(){
-		var userData = this.state.userData,
-			activeWaypoint = this.state.activeWaypoint,
-			setValue = this.setValue;
-
 		if (this.state.userData != ""){
+
+			var userData = this.state.userData,
+				activeWaypoint = this.state.activeWaypoint;
+
 		  	return (
 		  		<main className="siteContainer">
 		  			
@@ -112,7 +112,7 @@ class Site extends React.Component {
 
 		  			<LoginView state={userData}/>
 		  			<WayPointsView state={userData} setActiveWaypoint={this.setActiveWaypoint.bind(this)} createOrRemovePoint={this.createOrRemovePoint.bind(this)}/>
-		  			<CheckPointsView state={userData.waypoints[activeWaypoint]} index={[activeWaypoint]} setValue={setValue.bind(this)} createOrRemovePoint={this.createOrRemovePoint.bind(this)}/>
+		  			<CheckPointsView state={userData.waypoints[activeWaypoint]} index={[activeWaypoint]} setValue={this.setValue.bind(this)} createOrRemovePoint={this.createOrRemovePoint.bind(this)}/>
 		   		
 		   		</main>
 		  	)

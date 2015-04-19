@@ -32,14 +32,20 @@ class Site extends React.Component {
 	  	if (error) {
 	    	console.log('Login Failed!', error);
 	  	} else {
-	    	console.log('Authenticated successfully with payload:', authData);
+	    	// console.log('Authenticated successfully with payload:', authData);
 	  		this.getDataFromFirebase(authData);
 	  	}
 	}
 
 	getDataFromFirebase(authData){
-		this.firebaseRef.child('12334').on('value', function(data){
-			this.setState({userData: data.val()});
+		var authData = authData;
+		this.firebaseRef.child(authData.github.id).on('value', function(data){
+				if (data.val() == null){
+					let newAccount = new Model.User(authData.github.id, authData.github.displayName);
+					this.setState({userData: newAccount}, this.updateFirebase);
+				} else {
+					this.setState({userData: data.val()});
+				}
 		}.bind(this));
 	}
 
@@ -50,7 +56,7 @@ class Site extends React.Component {
 		if (this.state.timeout == 0){
 			this.setState({timeout: 1});
 			console.log('submitting');
-			this.firebaseRef.update({[userData.id+2]: userData}, function(){
+			this.firebaseRef.update({[userData.id]: userData}, function(){
 					console.log('database updated');
 					this.setState({timeout: 0});
 				}.bind(this)

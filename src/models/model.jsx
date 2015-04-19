@@ -29,10 +29,11 @@ class Waypoint {
 };
 
 class User {
-  constructor(id, email, name){
+  constructor(id, name, email){
     this.id = id;
-    this.email = email;
+    // this.email = email;
     this.name = name;
+    this.waypoints = [new Waypoint(1, name)];
   };
 };
 

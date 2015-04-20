@@ -32,8 +32,8 @@ class Site extends React.Component {
 	  	if (error) {
 	    	console.log('Login Failed!', error);
 	  	} else {
-	    	// console.log('Authenticated successfully with payload:', authData);
 	  		this.getDataFromFirebase(authData);
+	  		console.log(authData);
 	  	}
 	}
 
@@ -41,7 +41,8 @@ class Site extends React.Component {
 		var authData = authData;
 		this.firebaseRef.child(authData.github.id).on('value', function(data){
 				if (data.val() == null){
-					let newAccount = new Model.User(authData.github.id, authData.github.displayName);
+					let newAccount = new Model.User(authData.github.id, authData.github.displayName || "");
+					console.log('creating new account');
 					this.setState({userData: newAccount}, this.updateFirebase);
 				} else {
 					this.setState({userData: data.val()});

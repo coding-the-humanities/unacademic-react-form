@@ -12,7 +12,7 @@ class WaypointsList extends React.Component {
 
   				{()=>{
 					return (typeof userData.waypoints == 'undefined') 
-	 				? ( <p> No checkpoints </p>) 
+	 				? ( <p> No waypoints </p>) 
 	 				: (
 
 		 				userData.waypoints.map((value, index) => 

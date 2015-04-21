@@ -10,14 +10,13 @@ class Form extends React.Component {
 			createOrRemovePoint = this.props.createOrRemovePoint;
 
 	  	return (
-	  		<section className="Form">
+	  		<section className="form">
 
 	  			<div className="waypoint">
 		  			<h2>Current waypoint: </h2>
 		  			<h3>title: <input value={waypoint.title} onChange={ setValue.bind(this, outsideIndex, "title") }></input></h3>
 		  			<p>summary: <input value={waypoint.summary} onChange={ setValue.bind(this, outsideIndex, "summary") }></input></p>
 		  			<p>description: <input value={waypoint.description} onChange={ setValue.bind(this, outsideIndex, "description") }></input></p>
-		  			<button onClick={createOrRemovePoint.bind(this, outsideIndex, 'remove')}>remove waypoint</button>
 	   			</div>
 
 	  			<h2> Checkpoints: </h2>

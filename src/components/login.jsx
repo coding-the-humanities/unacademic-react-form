@@ -4,14 +4,16 @@ class Login extends React.Component {
 	render(){
 		if (typeof this.props.state == 'undefined'){ 
 		  	return (
-		  		<section className="loginView" style={{background: 'pink'}}>
-		  			<p>Please login</p>
-		  			<button onClick={ this.props.authWithFirebase.bind(this, 'github') }> github </button>
+		  		<section className="login">
+		  			<h1>Welcome to Unacademic</h1>
+		  			<p>Our site offers the prettiest interface to manipulate the teaching experience of your students.
+		  			Please kill me now. Also please login.</p>
+		  			<button className="github" onClick={ this.props.authWithFirebase.bind(this, 'github') } />
 		   		</section>
 		  	)
 	  	} else {
 	  		return (
-		  		<section className="loginView" style={{background: 'pink'}}>
+		  		<section className="login">
 		  			<p>You are logged in as: {this.props.state.name}</p>
 		   		</section>
 		  	)

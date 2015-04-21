@@ -47,7 +47,8 @@ class Site extends React.Component {
 				} else {
 					this.setState({userData: data.val()});
 				}
-		}.bind(this));
+			}.bind(this)
+		);
 	}
 
 	updateFirebase(){
@@ -156,12 +157,12 @@ class Site extends React.Component {
 				activeWaypoint = this.state.activeWaypoint;
 
 		  	return (
-		  		<main>
-		  			
-		  			<h1>Unacademic temporary unstyled curating interface</h1>
+		  		<main className="cf">
+		  			<header> 
+		  				<h1>Unacademic_</h1>
+		  			</header>
 
 		  			<Login state={userData}/>
-		  			<WaypointsList state={userData} setActiveWaypoint={this.setActiveWaypoint.bind(this)} createOrRemovePoint={this.createOrRemovePoint.bind(this)}/>
 		  			{	()=>{
 		  					if (userData.waypoints){
 		  						return (activeWaypoint == userData.waypoints.length) 
@@ -176,8 +177,11 @@ class Site extends React.Component {
 		} else {
 			return (
 				<main>
-			  		<h1>Unacademic temporary unstyled curating interface</h1>
+					<header> 
+		  				<h1>Unacademic_</h1>
+		  			</header>
 		  			<Login authWithFirebase={this.authWithFirebase.bind(this)}/>
+		  			
 		  		</main>
 			)
 		}

@@ -172,6 +172,9 @@ class Site extends React.Component {
 			 					return ( <h1> No waypoints</h1>)
 		  					}
 		  			}()}
+		  			<footer>
+	                    <h3> The end </h3>
+		  			</footer>
 		   		</main>
 		  	)
 		} else {
@@ -180,8 +183,10 @@ class Site extends React.Component {
 					<header> 
 		  				<h1>Unacademic_</h1>
 		  			</header>
-		  			<Login authWithFirebase={this.authWithFirebase.bind(this)}/>
-		  			
+		  			<Login className="cool" authWithFirebase={this.authWithFirebase.bind(this)}/>
+		  			<footer>
+	                    <h3> The end </h3>
+		  			</footer>
 		  		</main>
 			)
 		}

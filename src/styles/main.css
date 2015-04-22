@@ -10,29 +10,30 @@ body {
 }
 
 main {
-	background: white; 
+	background:white; 
 	width: 100%;
 	min-height: 100%;
 }
 
 header {
  	width: 100%;
- 	min-height: 50px;
- 	background: black;
+ 	min-height: 80px;
+ 	background: #2c3e50;
  	color: white;
- 	text-align: center;
-	padding: 10px 20px;
+	padding: 20px 20px;
 }
 
 header h1 {
 	margin: 0;
 }
 
+
 .login {
 	text-align: center;
 	max-width: 600px;
 	margin: 0 auto;
 	padding: 10px;
+
 }
 
 .github {
@@ -58,7 +59,7 @@ header h1 {
 	outline: none;
 	margin: 0 auto;
 	border-radius: 20px;
-	background-color: hsla(168, 77%, 42%, 0.5);
+	background-color: hsla(168, 77%, 42%, 1);
 }
 
 .authButton::focus {
@@ -66,7 +67,7 @@ header h1 {
 }
 
 .authButton:hover {
-	background-color: hsla(168, 77%, 42%, 1);
+	background-color: hsla(168, 77%, 42%, 0.5);
 }
 
 button {
@@ -175,6 +176,24 @@ input:focus{
 .hide {
 	float: right;
 }
+
+
+
+footer {
+	width: 100%;
+	min-height: 400px;
+ 	background: #2c3e50;
+}
+
+footer h3 {
+	color: #18bc9c;
+}
+
+footer p {
+	color: #E6D01E;
+}
+
+
 
 
 

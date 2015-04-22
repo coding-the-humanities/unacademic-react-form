@@ -12,11 +12,11 @@ class Login extends React.Component {
 		  			</p>
 		  			<p>We really like github for that:
 		  			</p>
-		  			<div>
+		  			<div className="buttonContainer">
 			  			<button className="authButton github" onClick={ this.props.authWithFirebase.bind(this, 'github') } />
 		  			</div>
 		  			<p>But you could also use the more common providers:</p>
-		  			<div>
+		  			<div className="buttonContainer">
 			  			<button className="authButton facebook" onClick={ this.props.authWithFirebase.bind(this, 'github') } />
 			  			<button className="authButton twitter" onClick={ this.props.authWithFirebase.bind(this, 'github') } />
 			  			<button className="authButton google" onClick={ this.props.authWithFirebase.bind(this, 'github') } />

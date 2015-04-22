@@ -9,7 +9,8 @@ class Login extends React.Component {
 		  			<p>Our site offers the prettiest interface to manipulate the
 		  			teaching experience of your students. We do need you to
 		  			login though. 
-		  			</p><p>We really like github for that:
+		  			</p>
+		  			<p>We really like github for that:
 		  			</p>
 		  			<div>
 			  			<button className="authButton github" onClick={ this.props.authWithFirebase.bind(this, 'github') } />

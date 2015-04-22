@@ -36,7 +36,7 @@ class Form extends React.Component {
 		  			;
 	  			}()}
 
-  				<button type="button" onClick={createOrRemovePoint.bind(this, outsideIndex, 'create')}>add checkpoint</button>
+  				<button type="button" className="utility plus" onClick={createOrRemovePoint.bind(this, outsideIndex, 'create')}>+</button>
 	   		</form>
 	  	)
   	}

@@ -9,11 +9,11 @@ class Resource extends React.Component {
 
 	  	return (
 	  		<fieldset className="resource">
-  				<legend> Resource </legend>
+  				<h3> Resource </h3>
 	  			<h4 className="cf">title: <input value={resource.title} onChange={ setValue.bind(this, outsideIndex, "title") }></input></h4>
 	  			<p className="cf">author: <input value={resource.author} onChange={ setValue.bind(this, outsideIndex, "author") }></input></p>
 	  			<p className="cf">url: <input value={resource.url} onChange={ setValue.bind(this, outsideIndex, "url") }></input></p>
-		  		<button type="button" onClick={createOrRemovePoint.bind(this, outsideIndex, 'remove')}>remove resource</button> 
+		  		<button type="button" className="utility minus" onClick={createOrRemovePoint.bind(this, outsideIndex, 'remove')}>-</button> 
 	   		</fieldset>
 	  	)
   	}

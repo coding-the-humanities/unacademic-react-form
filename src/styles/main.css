@@ -10,7 +10,7 @@ body {
 }
 
 main {
-	background: lightgrey; 
+	background: white; 
 	width: 100%;
 	min-height: 100%;
 }
@@ -33,7 +33,6 @@ header h1 {
 	max-width: 600px;
 	margin: 0 auto;
 	padding: 10px;
-	color: grey;
 }
 
 .authButton {
@@ -92,6 +91,8 @@ form {
 	border: none;
 	width: 100%;
 	padding: 10px;
+	margin-bottom: 20px;
+	background-color: hsla(0, 0%, 80%, 1);
 }
 
 .checkpointProperties {
@@ -108,12 +109,13 @@ form {
 }	
 
 .resource {
+	padding: 0 10px 10px 10px;
+	margin-bottom: 20px;
+	background-color: hsla(168, 77%, 42%, 0.5);
 	border: none;
 }
 
-fieldset.resource {
-	padding: 0;
-}
+
 
 
 label {
@@ -122,12 +124,13 @@ label {
 
 textarea, input {
 	display: inline-block;
-	background: white;
+	background-color: hsla(0, 0%, 90%, 0.5);
 	width: 100%;
 	height: 3em;
 	border: none;
 	padding: 0.5em;
 	display: block;
+	font-size: 1em
 }
 
 textarea {
@@ -140,6 +143,27 @@ input:focus{
     outline: 0;
 }
 
+.utility {
+	height: 50px;
+	width: 50px;
+	margin: 0 auto;
+	display: block;
+	border-radius: 50%;
+	background-color: hsla(0,100%,100%,1);
+}
+
+.utility:hover {
+	background-color: hsla(168, 77%, 42%, 0.5);
+}
+
+.utility:focus {
+	outline: none;
+}
+
+.hidden {
+	height: 100px;
+	overflow: hidden;
+}
 
 
 

@@ -24,8 +24,9 @@ class Checkpoint extends React.Component {
 		  	return (
 		  		<div className="checkpoint">
 		  			<div className="checkpointTitle cf">
-			  			<h3 > {this.props.index[1]+ 1}: {checkpoint.title} </h3>  		
-				  		<button type="button" className="utility hide" onClick={this.toggleHide.bind(this)}>\/</button>
+			  			<h3 > {this.props.index[1]+ 1}: {checkpoint.title} </h3>
+				  		<button type="button" className="utility hide" onClick={this.toggleHide.bind(this)}>/\</button>
+					  	<button type="button" className="utility minus minusTop" onClick={createOrRemovePoint.bind(this, outsideIndex, 'remove')}>-</button>
 				  	</div>
 			  		<fieldset>
 			  			<div className="checkpointProperties">
@@ -57,9 +58,10 @@ class Checkpoint extends React.Component {
 		} else {
 			return (
 		  		<div className="checkpoint">
-		  			<div className="checkpointH3">
-			  			<h3 > {this.props.index[1]+ 1}: {checkpoint.title} </h3>  		
+		  			<div className="checkpointTitle cf">
+			  			<h3 > {this.props.index[1]+ 1}: {checkpoint.title} </h3> 
 				  		<button type="button" className="utility hide" onClick={this.toggleHide.bind(this)}>\/</button>
+					  	<button type="button" className="utility minus minusTop" onClick={createOrRemovePoint.bind(this, outsideIndex, 'remove')}>-</button>
 				  	</div>
 				</div>
 		  	);

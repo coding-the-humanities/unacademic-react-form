@@ -10,26 +10,29 @@ class Checkpoint extends React.Component {
 
 	  	return (
 	  		<fieldset className="checkpoint">
-	  			<legend> Checkpoint </legend>
-	  			<h3> title: <input value={checkpoint.title} onChange={ setValue.bind(this, outsideIndex, "title") }></input></h3>
-	  			<p> description <input value={checkpoint.description} onChange={ setValue.bind(this, outsideIndex, "description") }></input></p>
-		  		<button type="button" onClick={createOrRemovePoint.bind(this, outsideIndex, 'remove')}>remove checkpoint</button>
+	  			<div className="checkpointProperties">
+		  			<legend> Checkpoint </legend>
+		  			<h3 className="cf"> title: <input value={checkpoint.title} onChange={ setValue.bind(this, outsideIndex, "title") }></input></h3>
+		  			<p className="cf"> description <input value={checkpoint.description} onChange={ setValue.bind(this, outsideIndex, "description") }></input></p>
+			  		<button type="button" onClick={createOrRemovePoint.bind(this, outsideIndex, 'remove')}>remove checkpoint</button>
+			  	</div>
+			  	<div className="resourcesContainer">
+			  		{()=>{
+	  					return (typeof checkpoint.resources == 'undefined') 
+			 				? ( <p> No resources </p>) 
+			 				: (
+								checkpoint.resources.map((value, index) => {
 
-		  		{()=>{
-  					return (typeof checkpoint.resources == 'undefined') 
-		 				? ( <p> No resources </p>) 
-		 				: (
-							checkpoint.resources.map((value, index) => {
+					  				var insideIndex = JSON.parse(JSON.stringify(outsideIndex)); 
+					  				insideIndex.push(index); 
 
-				  				var insideIndex = JSON.parse(JSON.stringify(outsideIndex)); 
-				  				insideIndex.push(index); 
-
-				  				return <Resource key={ index } index={ insideIndex } state={ value } setValue={setValue} createOrRemovePoint={createOrRemovePoint}/>
-				  			})
-		  				)
-		  			;
-	  			}()}
-	  			<button type="button" onClick={createOrRemovePoint.bind(this, outsideIndex, 'create')}>add resource</button>
+					  				return <Resource key={ index } index={ insideIndex } state={ value } setValue={setValue} createOrRemovePoint={createOrRemovePoint}/>
+					  			})
+			  				)
+			  			;
+		  			}()}
+		  			<button type="button" onClick={createOrRemovePoint.bind(this, outsideIndex, 'create')}>add resource</button>
+	  			</div>
 	   		</fieldset>
 	  	)
   	}

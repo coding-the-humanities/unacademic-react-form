@@ -35,22 +35,6 @@ header h1 {
 	padding: 10px;
 }
 
-.authButton {
-	width: 100px;
-	height: 100px;
-	border: 0;
-	outline: none;
-	margin: 0 auto;
-}
-
-.authButton::focus {
-	outline: 0;
-}
-
-.authbutton:hover {
-	background-color: teal;
-}
-
 .github {
 	background: url(../assets/Github.png) no-repeat center center / cover;	
 }
@@ -67,42 +51,72 @@ header h1 {
 	background: url(../assets/Googleplus.png) no-repeat center center / cover;	
 }
 
+.authButton {
+	width: 100px;
+	height: 100px;
+	border: 0;
+	outline: none;
+	margin: 0 auto;
+	border-radius: 20px;
+	background-color: hsla(168, 77%, 42%, 0.5);
+}
+
+.authButton::focus {
+	outline: 0;
+}
+
+.authButton:hover {
+	background-color: hsla(168, 77%, 42%, 1);
+}
+
 button {
 	margin: 0 auto;
 }
 
 form {
-	padding: 0 10px;
 	display: block;
+}
+
+fieldset {
+	padding: 0;
+	border: none;
+	margin: 0;
 }
 
 .waypoint {
 	width: 50%;
-	padding: 0 10px;
 	border: none;
-	text-align: left;
+	padding: 0 30px;
 }
 
-.waypointLeft {
-	padding: 0 10px;
+.checkpointContainer {
+	padding: 0 30px;
 }
 
 .checkpoint {
-	border: none;
 	width: 100%;
-	padding: 10px;
 	margin-bottom: 20px;
+}
+
+.checkpointTitle {
+	padding: 15px 30px;
 	background-color: hsla(0, 0%, 80%, 1);
+	margin-bottom: 20px;
+}
+
+.checkpoint h3 {
+	display: inline-block;
+	margin: 0;
 }
 
 .checkpointProperties {
-	padding: 10px;
+	padding: 0 30px;
 	width: 50%;
 	display: inline-block;
 }
 
 .resourcesContainer {
-	padding: 10px;
+	padding: 0 30px;
 	width: 50%;
 	float: right;
 	display: inline-block;
@@ -115,12 +129,6 @@ form {
 	border: none;
 }
 
-
-
-
-label {
-	width: 50%;
-}
 
 textarea, input {
 	display: inline-block;
@@ -160,9 +168,8 @@ input:focus{
 	outline: none;
 }
 
-.hidden {
-	height: 100px;
-	overflow: hidden;
+.hide {
+	float: right;
 }
 
 

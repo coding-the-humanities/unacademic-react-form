@@ -10,17 +10,14 @@ class Form extends React.Component {
 			createOrRemovePoint = this.props.createOrRemovePoint;
 
 	  	return (
-	  		<section className="form">
-
-	  			<div className="waypoint">
-		  			<h2>Current waypoint: </h2>
+	  		<form className="form">
+	  			<legend><h2>Current waypoint: </h2></legend>
+	  			<fieldset>
+	  				<legend>Information</legend>
 		  			<h3>title: <input value={waypoint.title} onChange={ setValue.bind(this, outsideIndex, "title") }></input></h3>
 		  			<p>summary: <input value={waypoint.summary} onChange={ setValue.bind(this, outsideIndex, "summary") }></input></p>
 		  			<p>description: <input value={waypoint.description} onChange={ setValue.bind(this, outsideIndex, "description") }></input></p>
-	   			</div>
-
-	  			<h2> Checkpoints: </h2>
-
+	  			</fieldset>
 	  			{()=>{
   					return (typeof waypoint.checkpoints == 'undefined') 
 		 				? ( <p> No checkpoints </p>) 
@@ -36,8 +33,8 @@ class Form extends React.Component {
 		  				)
 		  			;
 	  			}()}
-	  			<button onClick={createOrRemovePoint.bind(this, outsideIndex, 'create')}>add checkpoint</button>
-	   		</section>
+  				<button type="button" onClick={createOrRemovePoint.bind(this, outsideIndex, 'create')}>add checkpoint</button>
+	   		</form>
 	  	)
   	}
 }

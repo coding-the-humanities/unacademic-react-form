@@ -9,10 +9,11 @@ class Checkpoint extends React.Component {
 			createOrRemovePoint = this.props.createOrRemovePoint;
 
 	  	return (
-	  		<div className="checkpoint">
+	  		<fieldset className="checkpoint">
+	  			<legend> Checkpoint </legend>
 	  			<h3> title: <input value={checkpoint.title} onChange={ setValue.bind(this, outsideIndex, "title") }></input></h3>
 	  			<p> description <input value={checkpoint.description} onChange={ setValue.bind(this, outsideIndex, "description") }></input></p>
-		  		<button onClick={createOrRemovePoint.bind(this, outsideIndex, 'remove')}>remove checkpoint</button>
+		  		<button type="button" onClick={createOrRemovePoint.bind(this, outsideIndex, 'remove')}>remove checkpoint</button>
 
 		  		{()=>{
   					return (typeof checkpoint.resources == 'undefined') 
@@ -28,8 +29,8 @@ class Checkpoint extends React.Component {
 		  				)
 		  			;
 	  			}()}
-	  			<button onClick={createOrRemovePoint.bind(this, outsideIndex, 'create')}>add resource</button>
-	   		</div>
+	  			<button type="button" onClick={createOrRemovePoint.bind(this, outsideIndex, 'create')}>add resource</button>
+	   		</fieldset>
 	  	)
   	}
 }

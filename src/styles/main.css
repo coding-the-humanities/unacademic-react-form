@@ -21,7 +21,7 @@ header {
  	background: black;
  	color: white;
  	text-align: center;
-	padding: 5px 20px;
+	padding: 10px 20px;
 }
 
 header h1 {
@@ -29,9 +29,8 @@ header h1 {
 }
 
 .login {
-	background: grey;
+	text-align: center;
 	max-width: 600px;
-	min-width: 400px;
 	margin: 0 auto;
 	padding: 20px;
 	margin-top: 20px;
@@ -50,6 +49,10 @@ header h1 {
 	margin: 0 auto;
 }
 
+button {
+	margin: 0 auto;
+}
+
 .form {
 	background: grey;
 	min-width: 400px;
@@ -60,15 +63,13 @@ header h1 {
 }
 
 .checkpoint {
-	margin: 40px;
+	margin: 10px auto 10px 20px;
 	padding: 10px;
-	background: lightgrey; 
 }
 
 .resource {
 	margin: 10px;
 	padding: 10px;
-	background: grey;
 }
 
 

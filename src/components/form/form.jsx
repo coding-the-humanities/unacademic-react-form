@@ -30,13 +30,15 @@ class Form extends React.Component {
 				  				var insideIndex = JSON.parse(JSON.stringify(outsideIndex)); 
 				  				insideIndex.push(index); 
 
-				  				return (<Checkpoint key={ index } index={ insideIndex } state={ value } setValue={setValue} createOrRemovePoint={createOrRemovePoint}/>) 
+				  				return (
+				  					<Checkpoint key={ index } index={ insideIndex } state={ value } setValue={setValue} createOrRemovePoint={createOrRemovePoint}/>
+				  					) 
 				  			})
 		  				)
 		  			;
 	  			}()}
 
-				<button type="button" className="utility plus" onClick={createOrRemovePoint.bind(this, outsideIndex, 'create')}>+</button>
+  				<button type="button" className="utility plus" onClick={createOrRemovePoint.bind(this, outsideIndex, 'create', 'checkpoint')}>+</button>
 	   		</form>
 	  	)
   	}

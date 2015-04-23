@@ -25,23 +25,22 @@ class Site extends React.Component {
 	}
 
 	authWithFirebase(provider){
-		this.firebaseRef.authWithOAuthPopup(provider, this.authWithFirebaseCallback.bind(this));	
+		var provider = provider;
+		this.firebaseRef.authWithOAuthPopup(provider, function(error, authData){
+		  	if (error) {
+		    	console.log('Login Failed!', error);
+		  	} else {
+		  		this.getDataFromFirebase(authData, provider);
+		  		console.log(authData);
+		  	}
+		}.bind(this));
 	}
 
-	authWithFirebaseCallback(error, authData) {
-	  	if (error) {
-	    	console.log('Login Failed!', error);
-	  	} else {
-	  		this.getDataFromFirebase(authData);
-	  		console.log(authData);
-	  	}
-	}
-
-	getDataFromFirebase(authData){
+	getDataFromFirebase(authData, provider){
 		var authData = authData;
-		this.firebaseRef.child(authData.github.id).on('value', function(data){
+		this.firebaseRef.child(authData[provider].id).on('value', function(data){
 				if (data.val() == null){
-					let newAccount = new Model.User(authData.github.id, authData.github.displayName || "");
+					let newAccount = new Model.User(authData[provider].id, authData[provider].displayName || "");
 					console.log('creating new account');
 					this.setState({userData: newAccount}, this.updateFirebase);
 				} else {
@@ -204,8 +203,6 @@ class Site extends React.Component {
 
 		  			<footer>
 	                    <h3> Unacademic - Amsterdam </h3>
-	                    <p> Contact: </p>
-	                    <p> ..... </p>
 		  			</footer>
 		  		</main>
 			)

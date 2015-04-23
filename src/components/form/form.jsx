@@ -3,6 +3,15 @@ import React from 'react';
 import Checkpoint from './checkpoint.jsx';
 
 class Form extends React.Component {
+
+	constructor(props){
+		super(props);
+		this.state = {
+			activeCheckpoint: ""
+		}
+	}
+
+
 	render(){
 		var setValue = this.props.setValue,
 			waypoint = this.props.state,

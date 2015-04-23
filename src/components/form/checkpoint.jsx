@@ -6,7 +6,7 @@ class Checkpoint extends React.Component {
 	constructor(props){
 		super(props);
 		this.state = {
-			hidden: true
+			hidden: false
 		}
 	}
 
@@ -32,7 +32,8 @@ class Checkpoint extends React.Component {
 			  		<fieldset>
 			  			<div className="checkpointProperties">
 				  			<p className="cf"> title: <input value={checkpoint.title} onChange={ setValue.bind(this, outsideIndex, "title") }></input></p>
-				  			<p className="cf"> description <input value={checkpoint.description} onChange={ setValue.bind(this, outsideIndex, "description") }></input></p>
+				  			<p className="cf"> description: <input value={checkpoint.description} onChange={ setValue.bind(this, outsideIndex, "description") }></input></p>
+				  			<p className="cf"> instructions: <input value={checkpoint.instructions} onChange={ setValue.bind(this, outsideIndex, "instructions") }></input></p>
 					  	</div>
 					  	<div className="resourcesContainer">
 							<p> Resources: </p>

@@ -7,10 +7,8 @@ class Login extends React.Component {
 		  		<section className="login">
 		  			<h1>Welcome to Unacademic</h1>
 		  			<p>Our site offers the prettiest interface to manipulate the
-		  			teaching experience of your students. We do need you to
-		  			login though. 
-		  			</p>
-		  			<p>We really like github for that:
+		  			teaching experience of your students. </p>
+		  			<p>We need someway to detect that you are a human though. So we use these big evil coorporations to check for that. We prefer github:
 		  			</p>
 		  			<div className="buttonContainer cf">
 			  			<button className="authButton github" onClick={ this.props.authWithFirebase.bind(this, 'github') }>github</button>
@@ -21,6 +19,7 @@ class Login extends React.Component {
 			  			<button className="authButton twitter" onClick={ this.props.authWithFirebase.bind(this, 'twitter') } >twitter</button>
 			  			<button className="authButton google" onClick={ this.props.authWithFirebase.bind(this, 'google') } >google</button>
 		   			</div>
+		   			<p>Please note that using another provider will generate a new account</p>
 		   		</section>
 		  	)
 	  	} else {

@@ -1,6 +1,5 @@
 class Resource {
-  constructor(id){
-    this.id = id;
+  constructor(){
     this.title = "";
     this.author = "";
     this.url = "";
@@ -8,19 +7,17 @@ class Resource {
 }
 
 class Checkpoint {
-  constructor(id) {
-    this.id = id;
+  constructor() {
     this.title = "";
     this.description = "";
-    this.resources = [new Resource(1)];
+    this.resources = [new Resource];
+    this.instructions = "";
   };
 };
 
 class Waypoint {
-  constructor(id, curator) {
-    this.id = id;
+  constructor(curator) {
     this.title = "";
-    this.image = "";
     this.curator = curator;
     this.summary = "";
     this.description = "";
@@ -33,7 +30,7 @@ class User {
     this.id = id;
     // this.email = email;
     this.name = name;
-    this.waypoints = [new Waypoint(1, name)];
+    this.waypoints = [new Waypoint(name)];
   };
 };
 

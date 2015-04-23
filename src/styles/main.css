@@ -15,6 +15,11 @@ main {
 	min-height: 100%;
 }
 
+.wrapper {
+	min-height: 100%;
+	margin: 0 0 -200px;
+}
+
 header {
  	width: 100%;
  	min-height: 80px;
@@ -36,7 +41,11 @@ header h1 {
 
 }
 
-.github {
+.buttonContainer {
+	/*background-color: hsla(0, 0%, 80%, 1);*/
+}
+
+/*.github {
 	background: url(../assets/Github.png) no-repeat center center / cover;	
 }
 
@@ -50,16 +59,16 @@ header h1 {
 
 .google {
 	background: url(../assets/Googleplus.png) no-repeat center center / cover;	
-}
+}*/
 
 .authButton {
-	width: 100px;
 	height: 100px;
-	border: 0;
-	outline: none;
+	width: 100px;
 	margin: 0 auto;
-	border-radius: 20px;
-	background-color: hsla(168, 77%, 42%, 1);
+	display: block;
+	border-radius: 50%;
+	background-color: hsla(0,100%, 100%, 1);
+	display: inline-block;
 }
 
 .authButton::focus {
@@ -69,6 +78,8 @@ header h1 {
 .authButton:hover {
 	background-color: hsla(168, 77%, 42%, 0.5);
 }
+
+
 
 button {
 	margin: 0 auto;
@@ -181,16 +192,18 @@ input:focus{
 
 footer {
 	width: 100%;
-	min-height: 400px;
+	height: 200px;
+	padding: 30px;
  	background: #2c3e50;
+ 	color: white;
+ 	text-align: center;
 }
 
 footer h3 {
-	color: #18bc9c;
+
 }
 
 footer p {
-	color: #E6D01E;
 }
 
 

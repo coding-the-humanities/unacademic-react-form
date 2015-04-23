@@ -6,7 +6,7 @@ class Checkpoint extends React.Component {
 	constructor(props){
 		super(props);
 		this.state = {
-			hidden: false
+			hidden: true
 		}
 	}
 
@@ -26,18 +26,16 @@ class Checkpoint extends React.Component {
 		  			<div className="checkpointTitle cf">
 			  			<h3 > {this.props.index[1]+ 1}: {checkpoint.title} </h3>
 				  		<button type="button" className="utility hide" onClick={this.toggleHide.bind(this)}>/\</button>
-					  	<button type="button" className="utility minus barButton" onClick={createOrRemovePoint.bind(this, outsideIndex, 'remove')}>-</button>
-						<button type="button" className="utility plus barButton" onClick={createOrRemovePoint.bind(this, outsideIndex, 'create')}>+</button>
-
+					  	<button type="button" className="utility minus barButton" onClick={createOrRemovePoint.bind(this, outsideIndex, 'remove', 'checkpoint')}>-</button>
+						<button type="button" className="utility plus barButton" onClick={createOrRemovePoint.bind(this, outsideIndex, 'create', 'checkpoint')}>+</button>
 				  	</div>
 			  		<fieldset>
 			  			<div className="checkpointProperties">
 				  			<p className="cf"> title: <input value={checkpoint.title} onChange={ setValue.bind(this, outsideIndex, "title") }></input></p>
 				  			<p className="cf"> description <input value={checkpoint.description} onChange={ setValue.bind(this, outsideIndex, "description") }></input></p>
-					  		<button type="button" className="utility minus" onClick={createOrRemovePoint.bind(this, outsideIndex, 'remove')}>-</button>
 					  	</div>
 					  	<div className="resourcesContainer">
-							<p> Resource: </p>
+							<p> Resources: </p>
 					  		{()=>{
 			  					return (typeof checkpoint.resources == 'undefined') 
 					 				? ( <p> No resources </p>) 
@@ -52,7 +50,7 @@ class Checkpoint extends React.Component {
 					  				)
 					  			;
 				  			}()}
-				  			<button type="button" className="utility plus" onClick={createOrRemovePoint.bind(this, outsideIndex, 'create', 'checkpoint')}>+</button>
+				  			<button type="button" className="utility plus something" onClick={createOrRemovePoint.bind(this, outsideIndex, 'create', 'resource')}>+</button>
 			  			</div>
 			   		</fieldset>
 		   		</div>
@@ -63,7 +61,7 @@ class Checkpoint extends React.Component {
 		  			<div className="checkpointTitle cf">
 			  			<h3 > {this.props.index[1]+ 1}: {checkpoint.title} </h3> 
 				  		<button type="button" className="utility hide" onClick={this.toggleHide.bind(this)}>\/</button>
-					  	<button type="button" className="utility minus barButton" onClick={createOrRemovePoint.bind(this, outsideIndex, 'remove')}>-</button>
+					  	<button type="button" className="utility minus barButton" onClick={createOrRemovePoint.bind(this, outsideIndex, 'remove', 'checkpoint')}>-</button>
 						<button type="button" className="utility plus barButton" onClick={createOrRemovePoint.bind(this, outsideIndex, 'create', 'checkpoint')}>+</button>
 				  	</div>
 				</div>

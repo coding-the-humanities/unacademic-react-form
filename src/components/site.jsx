@@ -87,10 +87,10 @@ class Site extends React.Component {
 		}
 	}
 
-	createOrRemovePoint(index, action){
+	createOrRemovePoint(index, action, type){
 		if (action == 'create') {
-			if (index.length == 0){
-				// Create new waypoint and set it to active when created
+			console.log('index', index);
+			if (type == 'waypoint'){
 				var waypointCallback = function (){
 					this.updateFirebase();
 				};
@@ -99,15 +99,15 @@ class Site extends React.Component {
 					state.userData.waypoints.push( new Model.Waypoint(1, 'Zaturrby') );
 					return {userData: state.userData};
 				}, this.updateFirebase);
-			} else if (index.length == 1){
-				// create new checkpoint
+			} else if (type == 'checkpoint'){
+				console.log('checkpoint');
 				this.setState(function(state){
 					if (!state.userData.waypoints[index[0]].checkpoints){state.userData.waypoints[index[0]].checkpoints = [];}
 					state.userData.waypoints[index[0]].checkpoints.push(new Model.Checkpoint(1));
 					return {userData: state.userData};
 				}, this.updateFirebase);
-			} else if (index.length == 2){
-				// create new resource
+			} else if (type == 'resource'){
+				console.log('resource');
 				this.setState(function(state){
 					if (!state.userData.waypoints[index[0]].checkpoints[index[1]].resources){state.userData.waypoints[index[0]].checkpoints[index[1]].resources = [];}
 					state.userData.waypoints[index[0]].checkpoints[index[1]].resources.push(new Model.Resource(1));
@@ -173,19 +173,24 @@ class Site extends React.Component {
 		  					}
 		  			}()}
 		  			<footer>
-	                    <h3> The end </h3>
+	                    <h3> Unacademic - Amsterdam </h3>
 		  			</footer>
 		   		</main>
 		  	)
 		} else {
 			return (
 				<main>
-					<header> 
-		  				<h1>Unacademic_</h1>
-		  			</header>
-		  			<Login className="cool" authWithFirebase={this.authWithFirebase.bind(this)}/>
+		  			<section className="wrapper cf">
+						<header> 
+			  				<h1>Unacademic_</h1>
+			  			</header>
+			  			<Login className="cool" authWithFirebase={this.authWithFirebase.bind(this)}/>
+			  		</section>
+
 		  			<footer>
-	                    <h3> The end </h3>
+	                    <h3> Unacademic - Amsterdam </h3>
+	                    <p> Contact: </p>
+	                    <p> ..... </p>
 		  			</footer>
 		  		</main>
 			)

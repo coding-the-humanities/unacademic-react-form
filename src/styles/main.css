@@ -64,14 +64,14 @@ header h1 {
 .authButton {
 	height: 100px;
 	width: 100px;
-	margin: 0 auto;
+	margin: 0 20px;
 	display: block;
 	border-radius: 50%;
 	background-color: hsla(0,100%, 100%, 1);
 	display: inline-block;
 }
 
-.authButton::focus {
+.authButton	:focus {
 	outline: 0;
 }
 

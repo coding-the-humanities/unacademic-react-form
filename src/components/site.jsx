@@ -180,12 +180,12 @@ class Site extends React.Component {
 		} else {
 			return (
 				<main>
-		  			<section className="wrapper cf">
+		  			<div className="wrapper cf">
 						<header> 
 			  				<h1>Unacademic_</h1>
 			  			</header>
 			  			<Login className="cool" authWithFirebase={this.authWithFirebase.bind(this)}/>
-			  		</section>
+			  		</div>
 
 		  			<footer>
 	                    <h3> Unacademic - Amsterdam </h3>

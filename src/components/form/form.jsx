@@ -22,7 +22,7 @@ class Form extends React.Component {
 
 	  			{()=>{
   					return (typeof waypoint.checkpoints == 'undefined') 
-		 				? ( <p> No checkpoints </p>) 
+		 				? ( <div className="checkpoint"><div className="checkpointProperties"><p> No checkpoints </p></div></div>) 
 		 				: (
 				  			waypoint.checkpoints.map((value, index) => {
 
@@ -37,7 +37,7 @@ class Form extends React.Component {
 		  				)
 		  			;
 	  			}()}
-	  			
+
   				<button type="button" className="utility plus" onClick={createOrRemovePoint.bind(this, outsideIndex, 'create', 'checkpoint')}>+</button>
 	   		</form>
 	  	)

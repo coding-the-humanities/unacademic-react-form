@@ -71,7 +71,7 @@ header h1 {
 	display: inline-block;
 }
 
-.authButton	:focus {
+.authButton:focus {
 	outline: 0;
 }
 

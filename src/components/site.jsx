@@ -100,10 +100,25 @@ class Site extends React.Component {
 					return {userData: state.userData};
 				}, this.updateFirebase);
 			} else if (type == 'checkpoint'){
-				console.log('checkpoint');
 				this.setState(function(state){
-					if (!state.userData.waypoints[index[0]].checkpoints){state.userData.waypoints[index[0]].checkpoints = [];}
-					state.userData.waypoints[index[0]].checkpoints.push(new Model.Checkpoint(1));
+					var checkpoints = state.userData.waypoints[index[0]].checkpoints;
+
+					if (!checkpoints){checkpoints = [];}
+
+					//determine index to splice
+
+					let spliceIndex;
+
+					if (index[1] == 0){
+						spliceIndex = 0;
+					} else if (!index[1]){
+						spliceIndex = checkpoints.length
+					} else {
+						spliceIndex = index[1];
+					}
+
+					checkpoints.splice(spliceIndex, 0, new Model.Checkpoint(1));
+
 					return {userData: state.userData};
 				}, this.updateFirebase);
 			} else if (type == 'resource'){

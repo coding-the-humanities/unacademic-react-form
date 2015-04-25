@@ -174,10 +174,6 @@ class Site extends React.Component {
 		});
 	}
 
-	tester(){
-		this.forceUpdate();
-	}
-
 	render(){
 		if (this.state.userData != ""){
 
@@ -202,7 +198,6 @@ class Site extends React.Component {
 		  			}()}
 		  			<footer>
 	                    <h3> Unacademic - Amsterdam </h3>
-	                    <button onClick={ this.tester.bind(this) }> update </button>
 		  			</footer>
 		   		</main>
 		  	)

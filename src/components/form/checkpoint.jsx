@@ -3,29 +3,18 @@ import Resource from './resource.jsx';
 
 class Checkpoint extends React.Component {
 
-	constructor(props){
-		super(props);
-		this.state = {
-			hidden: false
-		}
-	}
-
-	toggleHide(e) {
-		this.setState({hidden: !this.state.hidden});
-	}
-
 	render(){
 		var setValue = this.props.setValue,
 			checkpoint = this.props.state,
 			outsideIndex = this.props.index,
 			createOrRemovePoint = this.props.createOrRemovePoint;
 
-		if (!this.state.hidden) {
+		if (this.props.nesting == outsideIndex[1]) {
 		  	return (
 		  		<div className="checkpoint">
 		  			<div className="checkpointTitle cf">
 			  			<h3 > {this.props.index[1]+ 1}: {checkpoint.title} </h3>
-				  		<button type="button" className="utility hide" onClick={this.toggleHide.bind(this)}>/\</button>
+				  		<button type="button" className="utility hide" onClick={this.props.toggleNesting.bind(this, outsideIndex)}>/\</button>
 					  	<button type="button" className="utility minus barButton" onClick={createOrRemovePoint.bind(this, outsideIndex, 'remove', 'checkpoint')}>-</button>
 						<button type="button" className="utility plus barButton" onClick={createOrRemovePoint.bind(this, outsideIndex, 'create', 'checkpoint')}>+</button>
 				  	</div>
@@ -61,7 +50,7 @@ class Checkpoint extends React.Component {
 		  		<div className="checkpoint">
 		  			<div className="checkpointTitle cf">
 			  			<h3 > {this.props.index[1]+ 1}: {checkpoint.title} </h3> 
-				  		<button type="button" className="utility hide" onClick={this.toggleHide.bind(this)}>\/</button>
+				  		<button type="button" className="utility hide" onClick={this.props.toggleNesting.bind(this, outsideIndex)}>\/</button>
 					  	<button type="button" className="utility minus barButton" onClick={createOrRemovePoint.bind(this, outsideIndex, 'remove', 'checkpoint')}>-</button>
 						<button type="button" className="utility plus barButton" onClick={createOrRemovePoint.bind(this, outsideIndex, 'create', 'checkpoint')}>+</button>
 				  	</div>

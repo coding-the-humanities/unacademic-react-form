@@ -15,8 +15,15 @@ class Site extends React.Component {
 		this.state = {
 			userData: "",
 			activeWaypoint: 0,
+			nesting: 0,
 			timeout: 0
 		}
+	}
+
+	toggleNesting(index, e) {
+		this.setState({nesting: index[1]}, ()=>{
+			console.log("Hidetoggle - index received:", index[1], "resulting state:", this.state.nesting);
+		}.bind(this));
 	}
 
 	componentWillMount(){
@@ -38,9 +45,10 @@ class Site extends React.Component {
 
 	getDataFromFirebase(authData, provider){
 		var authData = authData;
-		this.firebaseRef.child(authData[provider].id).on('value', function(data){
+		var uidGenerated = authData[provider].id + "-" + provider;
+		this.firebaseRef.child(uidGenerated).on('value', function(data){
 				if (data.val() == null){
-					let newAccount = new Model.User(authData[provider].id, authData[provider].displayName || "");
+					let newAccount = new Model.User(uidGenerated, authData[provider].displayName || "");
 					console.log('creating new account');
 					this.setState({userData: newAccount}, this.updateFirebase);
 				} else {
@@ -88,7 +96,6 @@ class Site extends React.Component {
 
 	createOrRemovePoint(index, action, type){
 		if (action == 'create') {
-			console.log('index', index);
 			if (type == 'waypoint'){
 				var waypointCallback = function (){
 					this.updateFirebase();
@@ -121,7 +128,6 @@ class Site extends React.Component {
 					return {userData: state.userData};
 				}, this.updateFirebase);
 			} else if (type == 'resource'){
-				console.log('resource');
 				this.setState(function(state){
 					if (!state.userData.waypoints[index[0]].checkpoints[index[1]].resources){state.userData.waypoints[index[0]].checkpoints[index[1]].resources = [];}
 					state.userData.waypoints[index[0]].checkpoints[index[1]].resources.push(new Model.Resource(1));
@@ -164,6 +170,10 @@ class Site extends React.Component {
 		});
 	}
 
+	tester(){
+		this.forceUpdate();
+	}
+
 	render(){
 		if (this.state.userData != ""){
 
@@ -181,13 +191,14 @@ class Site extends React.Component {
 		  					if (userData.waypoints){
 		  						return (activeWaypoint == userData.waypoints.length) 
 			 					? ( <h1> No waypoint selected</h1>)
-			 					: ( <Form state={userData.waypoints[activeWaypoint]} index={[activeWaypoint]} setValue={this.setValue.bind(this)} createOrRemovePoint={this.createOrRemovePoint.bind(this)}/>);
+			 					: ( <Form state={userData.waypoints[activeWaypoint]} index={[activeWaypoint]} setValue={this.setValue.bind(this)} createOrRemovePoint={this.createOrRemovePoint.bind(this)}  nesting={this.state.nesting} toggleNesting={this.toggleNesting}/>);
 		  					} else {
 			 					return ( <h1> No waypoints</h1>)
 		  					}
 		  			}()}
 		  			<footer>
 	                    <h3> Unacademic - Amsterdam </h3>
+	                    <button onClick={ this.tester.bind(this) }> update </button>
 		  			</footer>
 		   		</main>
 		  	)

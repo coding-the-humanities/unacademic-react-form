@@ -4,19 +4,13 @@ import Checkpoint from './checkpoint.jsx';
 
 class Form extends React.Component {
 
-	constructor(props){
-		super(props);
-		this.state = {
-			activeCheckpoint: ""
-		}
-	}
-
-
 	render(){
 		var setValue = this.props.setValue,
 			waypoint = this.props.state,
 			outsideIndex = this.props.index,
 			createOrRemovePoint = this.props.createOrRemovePoint;
+
+			console.log(this.props.nesting);
 
 	  	return (
 	  		<form className="form">
@@ -38,14 +32,13 @@ class Form extends React.Component {
 				  				// make deepcopy and push -- Can without doubt be done better
 				  				var insideIndex = JSON.parse(JSON.stringify(outsideIndex)); 
 				  				insideIndex.push(index); 
-
 				  				return (
-				  					<Checkpoint key={ index } index={ insideIndex } state={ value } setValue={setValue} createOrRemovePoint={createOrRemovePoint}/>
+				  					<Checkpoint key={ index } index={ insideIndex } state={ value } setValue={setValue} createOrRemovePoint={createOrRemovePoint} nesting={this.props.nesting} toggleNesting={this.props.toggleNesting}/>
 				  					) 
-				  			})
+				  			}.bind(this))
 		  				)
 		  			;
-	  			}()}
+	  			}.bind(this)()}
 
   				<button type="button" className="utility plus" onClick={createOrRemovePoint.bind(this, outsideIndex, 'create', 'checkpoint')}>+</button>
 	   		</form>

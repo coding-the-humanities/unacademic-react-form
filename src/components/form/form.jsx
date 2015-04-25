@@ -10,8 +10,6 @@ class Form extends React.Component {
 			outsideIndex = this.props.index,
 			createOrRemovePoint = this.props.createOrRemovePoint;
 
-			console.log(this.props.nesting);
-
 	  	return (
 	  		<form className="form">
 	  			<fieldset className="waypoint">

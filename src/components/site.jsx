@@ -21,9 +21,13 @@ class Site extends React.Component {
 	}
 
 	toggleNesting(index, e) {
-		this.setState({nesting: index[1]}, ()=>{
-			console.log("Hidetoggle - index received:", index[1], "resulting state:", this.state.nesting);
-		}.bind(this));
+		if (this.state.nesting == index[1]){
+			this.setState({nesting: null}, ()=>{
+			}.bind(this));
+		} else {
+			this.setState({nesting: index[1]}, ()=>{
+			}.bind(this));
+		}
 	}
 
 	componentWillMount(){
@@ -191,7 +195,7 @@ class Site extends React.Component {
 		  					if (userData.waypoints){
 		  						return (activeWaypoint == userData.waypoints.length) 
 			 					? ( <h1> No waypoint selected</h1>)
-			 					: ( <Form state={userData.waypoints[activeWaypoint]} index={[activeWaypoint]} setValue={this.setValue.bind(this)} createOrRemovePoint={this.createOrRemovePoint.bind(this)}  nesting={this.state.nesting} toggleNesting={this.toggleNesting}/>);
+			 					: ( <Form state={userData.waypoints[activeWaypoint]} index={[activeWaypoint]} setValue={this.setValue.bind(this)} createOrRemovePoint={this.createOrRemovePoint.bind(this)}  nesting={this.state.nesting} toggleNesting={this.toggleNesting.bind(this)}/>);
 		  					} else {
 			 					return ( <h1> No waypoints</h1>)
 		  					}

@@ -77,7 +77,7 @@ class Site extends React.Component {
 		}
 	}
 
-	updateDisplayName(event){
+	updateUser(event){
 		var newValue = event.target.value;
 		this.setState(function(state){
 			state.userData.name = newValue;
@@ -197,7 +197,7 @@ class Site extends React.Component {
 		  				<h1>Unacademic_</h1>
 		  			</header>
 
-		  			<Login state={userData} updateDisplayName={this.updateDisplayName.bind(this)}/>
+		  			<Login state={userData} updateUser={this.updateUser.bind(this)}/>
 		  			{	()=>{
 		  					if (userData.waypoints){
 		  						return (activeWaypoint == userData.waypoints.length) 
@@ -219,7 +219,7 @@ class Site extends React.Component {
 						<header> 
 			  				<h1>Unacademic_</h1>
 			  			</header>
-			  			<Login authWithFirebase={this.authWithFirebase.bind(this)} updateDisplayName={this.updateDisplayName.bind(this)} />
+			  			<Login authWithFirebase={this.authWithFirebase.bind(this)} updateUser={this.updateUser.bind(this)} />
 			  		</div>
 
 		  			<footer>

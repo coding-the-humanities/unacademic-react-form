@@ -22,7 +22,7 @@ class Login extends React.Component {
 	  	} else {
 	  		return (
 		  		<section className="login">
-		  			<p>You are logged in as: <input className="loginInput" onChange={this.props.updateDisplayName.bind(this)} value={this.props.state.name} /></p>
+		  			<p>You are logged in as: <input className="loginInput" onChange={this.props.updateUser.bind(this)} value={this.props.state.name} /></p>
 		   		</section>
 		  	)
 	  	}

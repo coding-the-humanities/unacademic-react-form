@@ -2,14 +2,13 @@ import React from 'react';
 
 class Login extends React.Component {
 	render(){
-		if (typeof this.props.state == 'undefined'){ 
+		if (typeof this.props.state == 'undefined'){
 		  	return (
 		  		<section className="login">
-		  			<h1>Welcome to Unacademic</h1>
-		  			<p>Our site offers the prettiest interface to manipulate the
-		  			teaching experience of your students. </p>
-		  			<p>We need someway to detect that you are a human though. So we use these big evil coorporations to check for that. We prefer github:
-		  			</p>
+		  			<h1>Welcome to the Unacademic First Generation Environment</h1>
+		  			<p>This environment offers an interface to enter your waypoint. We have named a traditional course a waypoint, because waypoints help you navigate on the sea. The traditional chapters or levels of a course trajectory we have called checkpoints. So get started on your waypoint for learners to start learning by dwelling. </p>
+		  			<p>We need someway to detect that you are a human. </p>
+		  			<p>We prefer github:</p>
 		  			<div className="buttonContainer cf">
 			  			<button className="authButton github" onClick={ this.props.authWithFirebase.bind(this, 'github') }>github</button>
 		  			</div>

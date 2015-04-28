@@ -6,8 +6,7 @@ class Header extends React.Component {
 	  				<h1>Unacademic_</h1>
 	  				{ ()=>{
 						if (this.props.state){
-	  						return 	<p>You are logged in as: <input className="loginInput" onChange={this.props.updateUser.bind(this, 'name')} value={this.props.state.name} /></p>
-	  									{/* <p>from: <input className="loginInput" onChange={this.props.updateUser.bind(this, 'institution')} value={this.props.state.institution} /></p> */}
+	  						return 	<p onClick={this.props.setView.bind(this, 'profile')}>You are logged in as: {this.props.state.name} /></p>
 	  					}
 	  				}() }
 	  			</header>

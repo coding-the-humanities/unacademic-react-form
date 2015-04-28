@@ -17,22 +17,12 @@ class Site extends React.Component {
 			userData: "",
 			activeWaypoint: 0,
 			nesting: 0,
+			view: 'profile',
 			timeout: 0
 		}
 	}
 
-	toggleNesting(index, e) {
-		if (this.state.nesting == index[1]){
-			this.setState({nesting: null}, ()=>{
-			}.bind(this));
-		} else {
-			this.setState({nesting: index[1]}, ()=>{
-			}.bind(this));
-		}
-	}
-
 	componentWillMount(){
-		// starting up firebase
 		this.firebaseRef = new Firebase('https://unacademic-form.firebaseio.com/');
 	}
 
@@ -44,13 +34,14 @@ class Site extends React.Component {
 		  	} else {
 		  		this.getDataFromFirebase(authData, provider);
 		  		console.log(authData);
+		  		this.setView('waypoint')
 		  	}
 		}.bind(this));
 	}
 
 	getDataFromFirebase(authData, provider){
 		var authData = authData;
-		var uidGenerated = authData[provider].id + "-" + provider;
+		var uidGenerated = authData[provider].id + '-' + provider;
 		this.firebaseRef.child(uidGenerated).on('value', function(data){
 				if (data.val() == null){
 					let newAccount = new Model.User(uidGenerated, authData[provider].displayName || "");
@@ -91,6 +82,11 @@ class Site extends React.Component {
 		} else if (type == 'institution'){
 			this.setState(function(state){
 				state.userData.institution = newValue;
+				return {userData: state.userData};
+			}, this.updateFirebase);
+		} else if (type == 'description'){
+			this.setState(function(state){
+				state.userData.description = newValue;
 				return {userData: state.userData};
 			}, this.updateFirebase);
 		}
@@ -187,21 +183,35 @@ class Site extends React.Component {
 		}
 	}
 
+	toggleNesting(index, e) {
+		if (this.state.nesting == index[1]){
+			this.setState({nesting: null}, ()=>{
+			}.bind(this));
+		} else {
+			this.setState({nesting: index[1]}, ()=>{
+			}.bind(this));
+		}
+	}
+
 	setActiveWaypoint(index){
 		this.setState(function(state){
 			return {activeWaypoint: index};
 		});
 	}
 
+	setView(view){
+		this.setState({view: view});
+	}
+
 	render(){
-		if (this.state.userData != ""){
+		if (this.state.view == 'waypoint'){
 
 			var userData = this.state.userData,
 				activeWaypoint = this.state.activeWaypoint;
 
 		  	return (
 		  		<main className="cf">
-	  				<Header state={userData} updateUser={this.updateUser.bind(this)} />
+	  				<Header state={userData} setView={this.setView.bind(this)}/>
 		  			{	()=>{
 		  					if (userData.waypoints){
 		  						return (activeWaypoint == userData.waypoints.length) 
@@ -216,11 +226,11 @@ class Site extends React.Component {
 		  			</footer>
 		   		</main>
 		  	)
-		} else {
+		} else if (this.state.view == 'auth') {
 			return (
 				<main>
 		  			<div className="wrapper cf">
-	  					<Header state={userData} updateUser={this.updateUser.bind(this)} />
+	  					<Header state={userData} setView={this.setView.bind(this)}/>
 			  			<Login authWithFirebase={this.authWithFirebase.bind(this)} updateUser={this.updateUser.bind(this)} />
 			  		</div>
 		  			<footer>
@@ -228,7 +238,24 @@ class Site extends React.Component {
 		  			</footer>
 		  		</main>
 			)
+		} else if (this.state.view == 'profile') {
+			return (
+				<main>
+		  			<div className="wrapper cf">
+	  					<Header state={userData} setView={this.setView.bind(this)}/>
+	  					<section className="profile">
+							<p> Name: <input className="loginInput" onChange={this.updateUser.bind(this, 'name')} value={this.state.name} /></p> 
+							<p> Affiliated institution <input className="loginInput" onChange={this.updateUser.bind(this, 'institution')} value={this.state.institution} /></p> 
+							<p> A description of yourself: <input className="loginInput" onChange={this.updateUser.bind(this, 'description')} value={this.state.description} /></p>
+	  					</section>
+			  		</div>
+		  			<footer>
+	                    <h3> Unacademic - Amsterdam </h3>
+		  			</footer>
+		  		</main>
+			)
 		}
+
   	}
 }
 

@@ -1,6 +1,20 @@
+@font-face {
+ font-family: 'NN';
+ font-style: normal;
+ font-weight: 400;
+ src: url('../assets/fonts/NN.woff')  format('woff');
+}
+
+@font-face{
+  font-family: 'NB';
+  font-style: bold;
+  font-weight: 700;
+  src: url('../assets/fonts/NB.woff') format('woff');
+}
+
 * {
 	box-sizing: border-box;
-	font-family: 'Lucida Console';
+	font-family: 'NN';
 }
 
 body {

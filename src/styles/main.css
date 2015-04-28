@@ -85,10 +85,17 @@ fieldset {
 	width: 50%;
 	border: none;
 	padding: 0 30px;
+	margin-left: 25%;
+}
+
+.waypoint h1{
+	font-family: 'NB';
 }
 
 .checkpointContainer {
 	padding: 0 30px;
+	font-family: 'NB';
+	font-size: 1.7em;
 }
 
 .checkpoint {

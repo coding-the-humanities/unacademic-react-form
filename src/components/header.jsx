@@ -6,7 +6,10 @@ class Header extends React.Component {
 	  				<h1>Unacademic_ Hello</h1>
 	  				{ ()=>{
 						if (this.props.state){
-	  						return <p>You are logged in as: <input className="loginInput" onChange={this.props.updateUser.bind(this)} value={this.props.state.name} /></p>
+	  						return 	<div>
+	  									<p>You are logged in as: <input className="loginInput" onChange={this.props.updateUser.bind(this, 'name')} value={this.props.state.name} /></p>
+	  									<p>from: <input className="loginInput" onChange={this.props.updateUser.bind(this, 'institution')} value={this.props.state.institution} /></p>
+  									</div>
 	  					}
 	  				}() }
 	  			</header>

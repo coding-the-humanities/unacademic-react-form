@@ -78,15 +78,22 @@ class Site extends React.Component {
 		}
 	}
 
-	updateUser(event){
+	updateUser(type, event){
 		var newValue = event.target.value;
-		this.setState(function(state){
-			state.userData.name = newValue;
-			state.userData.waypoints.map((value, index)=>{
-				state.userData.waypoints[index].curator = newValue;
-			})
-			return {userData: state.userData};
-		}, this.updateFirebase);
+		if (type == 'name') {
+			this.setState(function(state){
+				state.userData.name = newValue;
+				state.userData.waypoints.map((value, index)=>{
+					state.userData.waypoints[index].curator = newValue;
+				})
+				return {userData: state.userData};
+			}, this.updateFirebase);
+		} else if (type == 'institution'){
+			this.setState(function(state){
+				state.userData.institution = newValue;
+				return {userData: state.userData};
+			}, this.updateFirebase);
+		}
 	}
 
 	setValue(index, fieldType, event){

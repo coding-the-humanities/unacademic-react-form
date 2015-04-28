@@ -84,8 +84,7 @@ fieldset {
 .waypoint {
 	width: 50%;
 	border: none;
-	padding: 0 30px;
-	margin-left: 25%;
+	padding: 0px 30px;
 }
 
 .waypoint h1{
@@ -164,11 +163,15 @@ input:focus{
 	width: 20em;
 }
 
-header span{
-	margin-left: 780px;
-
+header h1 {
+	display: inline-block;
 }
 
+header p {
+	display: inline-block;
+	float: right;
+	margin: 0;
+}
 
 /* Button styling in the document */
 

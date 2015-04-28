@@ -46,10 +46,18 @@ class Site extends React.Component {
 					let newAccount = new Model.User(uidGenerated, authData[provider].displayName || "");
 					console.log('creating new account');
 					this.setState({userData: newAccount}, this.updateFirebase);
+					this.setView('profile');
 				} else {
 					this.setState({userData: data.val()} );
+					this.setView(()=> {
+						if (this.state.view == 'auth') {
+							return 'waypoint';
+						} else {
+							return this.state.view;
+						}
+					}());
 				}
-				this.setView('waypoint')
+				
 			}.bind(this)
 		);
 	}
@@ -204,9 +212,11 @@ class Site extends React.Component {
 	}
 
 	render(){
+
+		var userData = this.state.userData,
+			activeWaypoint = this.state.activeWaypoint;
+			
 		if (this.state.view == 'waypoint'){
-			var userData = this.state.userData,
-				activeWaypoint = this.state.activeWaypoint;
 		  	return (
 		  		<main className="cf">
 	  				<Header state={userData} setView={this.setView.bind(this)}/>
@@ -242,9 +252,9 @@ class Site extends React.Component {
 		  			<div className="wrapper cf">
 	  					<Header state={userData} setView={this.setView.bind(this)}/>
 	  					<section className="profile">
-							<p> Name: <input className="loginInput" onChange={this.updateUser.bind(this, 'name')} value={this.state.name} /></p> 
-							<p> Affiliated institution <input className="loginInput" onChange={this.updateUser.bind(this, 'institution')} value={this.state.institution} /></p> 
-							<p> A description of yourself: <input className="loginInput" onChange={this.updateUser.bind(this, 'description')} value={this.state.description} /></p>
+							<p> Name: <input className="loginInput" onChange={this.updateUser.bind(this, 'name')} value={userData.name} /></p> 
+							<p> Affiliated institution <input className="loginInput" onChange={this.updateUser.bind(this, 'institution')} value={userData.institution} /></p> 
+							<p> A description of yourself: <input className="loginInput" onChange={this.updateUser.bind(this, 'description')} value={userData.description} /></p>
 							<button onClick={ this.setView.bind(this, 'waypoint') }> Im all done! Please click me to have a blast at updating your awesome waypoint! </button>
 	  					</section>
 			  		</div>

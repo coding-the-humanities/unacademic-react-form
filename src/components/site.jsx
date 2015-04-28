@@ -17,7 +17,7 @@ class Site extends React.Component {
 			userData: "",
 			activeWaypoint: 0,
 			nesting: 0,
-			view: 'profile',
+			view: 'auth',
 			timeout: 0
 		}
 	}
@@ -34,7 +34,6 @@ class Site extends React.Component {
 		  	} else {
 		  		this.getDataFromFirebase(authData, provider);
 		  		console.log(authData);
-		  		this.setView('waypoint')
 		  	}
 		}.bind(this));
 	}
@@ -48,8 +47,9 @@ class Site extends React.Component {
 					console.log('creating new account');
 					this.setState({userData: newAccount}, this.updateFirebase);
 				} else {
-					this.setState({userData: data.val()});
+					this.setState({userData: data.val()} );
 				}
+				this.setView('waypoint')
 			}.bind(this)
 		);
 	}
@@ -205,10 +205,8 @@ class Site extends React.Component {
 
 	render(){
 		if (this.state.view == 'waypoint'){
-
 			var userData = this.state.userData,
 				activeWaypoint = this.state.activeWaypoint;
-
 		  	return (
 		  		<main className="cf">
 	  				<Header state={userData} setView={this.setView.bind(this)}/>
@@ -247,6 +245,7 @@ class Site extends React.Component {
 							<p> Name: <input className="loginInput" onChange={this.updateUser.bind(this, 'name')} value={this.state.name} /></p> 
 							<p> Affiliated institution <input className="loginInput" onChange={this.updateUser.bind(this, 'institution')} value={this.state.institution} /></p> 
 							<p> A description of yourself: <input className="loginInput" onChange={this.updateUser.bind(this, 'description')} value={this.state.description} /></p>
+							<button onClick={ this.setView.bind(this, 'waypoint') }> Im all done! Please click me to have a blast at updating your awesome waypoint! </button>
 	  					</section>
 			  		</div>
 		  			<footer>

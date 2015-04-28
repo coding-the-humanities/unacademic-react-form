@@ -30,6 +30,7 @@ class User {
     this.id = id;
     // this.email = email;
     this.name = name;
+    this.institution = ""; 
     this.waypoints = [new Waypoint(name)];
   };
 };

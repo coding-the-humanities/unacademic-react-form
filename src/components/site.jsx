@@ -4,6 +4,7 @@ import Firebase from '../../node_modules/firebase/lib/firebase-web.js';
 import Form from './form/form.jsx';
 import WaypointsList from './waypoints-list.jsx';
 import Login from './login.jsx';
+import Header from './header.jsx';
 import Model from '../models/model.jsx';
 
 import css from '../styles/main.css';
@@ -193,11 +194,7 @@ class Site extends React.Component {
 
 		  	return (
 		  		<main className="cf">
-		  			<header> 
-		  				<h1>Unacademic_</h1>
-		  			</header>
-
-		  			<Login state={userData} updateUser={this.updateUser.bind(this)}/>
+	  				<Header state={userData} updateUser={this.updateUser.bind(this)} />
 		  			{	()=>{
 		  					if (userData.waypoints){
 		  						return (activeWaypoint == userData.waypoints.length) 
@@ -216,12 +213,9 @@ class Site extends React.Component {
 			return (
 				<main>
 		  			<div className="wrapper cf">
-						<header> 
-			  				<h1>Unacademic_</h1>
-			  			</header>
+	  					<Header state={userData} updateUser={this.updateUser.bind(this)} />
 			  			<Login authWithFirebase={this.authWithFirebase.bind(this)} updateUser={this.updateUser.bind(this)} />
 			  		</div>
-
 		  			<footer>
 	                    <h3> Unacademic - Amsterdam </h3>
 		  			</footer>

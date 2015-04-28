@@ -28,7 +28,7 @@ body {
 }
 
 main {
-	background:white; 
+	background:white;
 	width: 100%;
 	min-height: 100%;
 }
@@ -60,9 +60,12 @@ header h1 {
 	max-width: 600px;
 	margin: 0 auto;
 	padding: 10px;
-
+	margin-bottom: 2em;
 }
 
+.login h1{
+		margin-bottom: 2.5em;
+	}
 
 /* normalisation of semantic elements */
 
@@ -115,7 +118,7 @@ fieldset {
 	width: 50%;
 	float: right;
 	display: inline-block;
-}	
+}
 
 .resource {
 	padding: 0 10px 10px 10px;
@@ -144,7 +147,7 @@ textarea {
 	height: 10em;
 }
 
-textarea:focus, 
+textarea:focus,
 input:focus{
     outline: 0;
 }
@@ -155,7 +158,7 @@ input:focus{
 }
 
 
- 
+
 /* Button styling in the document */
 
 button {
@@ -168,7 +171,8 @@ button {
 	margin: 0 20px;
 	display: block;
 	border-radius: 50%;
-	background-color: hsla(0,100%, 100%, 1);
+	border-style: none;
+	background-color: hsla(168, 77%, 42%, 0.3);
 	display: inline-block;
 }
 
@@ -178,6 +182,7 @@ button {
 
 .authButton:hover {
 	background-color: hsla(168, 77%, 42%, 0.5);
+	box-shadow: 10px 10px 5px #888888;;
 }
 
 .utility {
@@ -229,7 +234,7 @@ footer {
 .cf:before,
 .cf:after {
     content: " ";
-    display: table; 
+    display: table;
 }
 
 .cf:after {

@@ -7,8 +7,7 @@ class Login extends React.Component {
 		  		<section className="login">
 		  			<h1>Welcome to the Unacademic First Generation Environment</h1>
 		  			<p>This environment offers an interface to enter your waypoint. We have named a traditional course a waypoint, because waypoints help you navigate on the sea. The traditional chapters or levels of a course trajectory we have called checkpoints. So get started on your waypoint for learners to start learning by dwelling. </p>
-		  			<p>We need someway to detect that you are a human. </p>
-		  			<p>We prefer github:</p>
+		  			<p><u>Please log in, we prefer github:</u></p>
 		  			<div className="buttonContainer cf">
 			  			<button className="authButton github" onClick={ this.props.authWithFirebase.bind(this, 'github') }>github</button>
 		  			</div>
@@ -18,7 +17,6 @@ class Login extends React.Component {
 			  			<button className="authButton twitter" onClick={ this.props.authWithFirebase.bind(this, 'twitter') } >twitter</button>
 			  			<button className="authButton google" onClick={ this.props.authWithFirebase.bind(this, 'google') } >google</button>
 		   			</div>
-		   			<p>Please note that using another provider will generate a new account</p>
 		   		</section>
 		  	)
 	  	} else {

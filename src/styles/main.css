@@ -149,7 +149,10 @@ input:focus{
     outline: 0;
 }
 
-
+.loginInput {
+	display: inline-block;
+	width: 20em;
+}
 
 
  

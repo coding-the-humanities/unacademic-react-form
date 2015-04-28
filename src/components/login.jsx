@@ -24,7 +24,7 @@ class Login extends React.Component {
 	  	} else {
 	  		return (
 		  		<section className="login">
-		  			<p>You are logged in as: {this.props.state.name}</p>
+		  			<p>You are logged in as: <input className="loginInput" value={this.props.state.name} /></p>
 		   		</section>
 		  	)
 	  	}

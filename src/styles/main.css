@@ -1,3 +1,5 @@
+/* Fonts and general stuff */
+
 @font-face {
  font-family: 'NN';
  font-style: normal;
@@ -17,6 +19,8 @@
 	font-family: 'NN';
 }
 
+/* Containers with a wrapper for making sure the footer is at the bottom */
+
 body {
 	margin: 0;
 	height: 100%;
@@ -35,6 +39,8 @@ main {
 	padding-bottom: 150px;
 }
 
+/* Header styling */
+
 header {
  	width: 100%;
  	min-height: 80px;
@@ -47,6 +53,7 @@ header h1 {
 	margin: 0;
 }
 
+/* Login */
 
 .login {
 	text-align: center;
@@ -56,49 +63,8 @@ header h1 {
 
 }
 
-.buttonContainer {
-	/*background-color: hsla(0, 0%, 80%, 1);*/
-}
 
-/*.github {
-	background: url(../assets/Github.png) no-repeat center center / cover;	
-}
-
-.facebook {
-	background: url(../assets/Facebook.png) no-repeat center center / cover;	
-}
-
-.twitter {
-	background: url(../assets/Twitter.png) no-repeat center center / cover;	
-}
-
-.google {
-	background: url(../assets/Googleplus.png) no-repeat center center / cover;	
-}*/
-
-.authButton {
-	height: 100px;
-	width: 100px;
-	margin: 0 20px;
-	display: block;
-	border-radius: 50%;
-	background-color: hsla(0,100%, 100%, 1);
-	display: inline-block;
-}
-
-.authButton:focus {
-	outline: 0;
-}
-
-.authButton:hover {
-	background-color: hsla(168, 77%, 42%, 0.5);
-}
-
-
-
-button {
-	margin: 0 auto;
-}
+/* normalisation of semantic elements */
 
 form {
 	display: block;
@@ -109,6 +75,8 @@ fieldset {
 	border: none;
 	margin: 0;
 }
+
+/* Setting all the paddings and margins on the elements */
 
 .waypoint {
 	width: 50%;
@@ -157,6 +125,9 @@ fieldset {
 }
 
 
+
+/* The styling of input boxes */
+
 textarea, input {
 	display: inline-block;
 	background-color: hsla(0, 0%, 90%, 0.5);
@@ -176,6 +147,34 @@ textarea {
 textarea:focus, 
 input:focus{
     outline: 0;
+}
+
+
+
+
+ 
+/* Button styling in the document */
+
+button {
+	margin: 0 auto;
+}
+
+.authButton {
+	height: 100px;
+	width: 100px;
+	margin: 0 20px;
+	display: block;
+	border-radius: 50%;
+	background-color: hsla(0,100%, 100%, 1);
+	display: inline-block;
+}
+
+.authButton:focus {
+	outline: 0;
+}
+
+.authButton:hover {
+	background-color: hsla(168, 77%, 42%, 0.5);
 }
 
 .utility {
@@ -205,6 +204,8 @@ input:focus{
 
 
 
+/* footer styling */
+
 footer {
 	width: 100%;
 	height: 150px;
@@ -214,34 +215,10 @@ footer {
  	text-align: center;
 }
 
-footer h3 {
-
-}
-
-footer p {
-}
 
 
 
 
-
-
-
-
-
-
-
-
- /*waypointslist old*/
-
-.WaypointsList {
-	background: lightblue;
-	width: 200px; 
-}
-
-.waypointInList {
-	background: blue;
-}
 
 
 /* clearfix */

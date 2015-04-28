@@ -3,7 +3,7 @@ import React from 'react';
 class Header extends React.Component {
 	render(){
 		return 	<header>
-	  				<h1>Unacademic_ Hello</h1>
+	  				<h1>Unacademic_</h1>
 	  				{ ()=>{
 						if (this.props.state){
 	  						return 	<div>

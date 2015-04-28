@@ -77,6 +77,17 @@ class Site extends React.Component {
 		}
 	}
 
+	updateDisplayName(event){
+		var newValue = event.target.value;
+		this.setState(function(state){
+			state.userData.name = newValue;
+			state.userData.waypoints.map((value, index)=>{
+				state.userData.waypoints[index].curator = newValue;
+			})
+			return {userData: state.userData};
+		}, this.updateFirebase);
+	}
+
 	setValue(index, fieldType, event){
 		var newValue = event.target.value,
 			fieldType = fieldType;
@@ -186,7 +197,7 @@ class Site extends React.Component {
 		  				<h1>Unacademic_</h1>
 		  			</header>
 
-		  			<Login state={userData}/>
+		  			<Login state={userData} updateDisplayName={this.updateDisplayName.bind(this)}/>
 		  			{	()=>{
 		  					if (userData.waypoints){
 		  						return (activeWaypoint == userData.waypoints.length) 
@@ -208,7 +219,7 @@ class Site extends React.Component {
 						<header> 
 			  				<h1>Unacademic_</h1>
 			  			</header>
-			  			<Login className="cool" authWithFirebase={this.authWithFirebase.bind(this)}/>
+			  			<Login authWithFirebase={this.authWithFirebase.bind(this)} updateDisplayName={this.updateDisplayName.bind(this)} />
 			  		</div>
 
 		  			<footer>

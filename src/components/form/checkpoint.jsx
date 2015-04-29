@@ -28,10 +28,10 @@ class Checkpoint extends React.Component {
 				  				<p className="cf"> title: <input value={checkpoint.title} onChange={ setValue.bind(this, outsideIndex, "title") }></input></p>
 		  					</OverlayTrigger>
 							<OverlayTrigger placement='right' overlay={<Tooltip><strong>Holy guacamole!</strong> Check this info.</Tooltip>}>
-				  				<p className="cf"> description: <input value={checkpoint.description} onChange={ setValue.bind(this, outsideIndex, "description") }></input></p>
+				  				<p className="cf"> description: <textarea value={checkpoint.description} onChange={ setValue.bind(this, outsideIndex, "description") }></textarea></p>
 		  					</OverlayTrigger>
 							<OverlayTrigger placement='right' overlay={<Tooltip><strong>Holy guacamole!</strong> Check this info.</Tooltip>}>
-				  				<p className="cf"> instructions: <textarea value={checkpoint.instructions} onChange={ setValue.bind(this, outsideIndex, "instructions") }></textarea></p>
+				  				<p className="cf"> instructions: <input value={checkpoint.instructions} onChange={ setValue.bind(this, outsideIndex, "instructions") }></input></p>
 		  					</OverlayTrigger>
 					  	</div>
 					  	<div className="resourcesContainer">

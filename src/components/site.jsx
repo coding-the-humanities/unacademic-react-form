@@ -247,12 +247,7 @@ class Site extends React.Component {
 			  			<Login authWithFirebase={this.authWithFirebase.bind(this)} updateUser={this.updateUser.bind(this)} />
 			  		</div>
 		  			<footer>
-
-		  			 	<OverlayTrigger placement='left' overlay={<Tooltip><strong>Holy guacamole!</strong> Check this info.</Tooltip>}>
-      						<button bsStyle='default'>Holy guacamole!</button>
-    					</OverlayTrigger>
                     	<h3> Unacademic - Amsterdam </h3>
-
 		  			</footer>
 		  		</main>
 			)
@@ -261,15 +256,18 @@ class Site extends React.Component {
 				<main>
 		  			<div className="wrapper cf">
 	  					<Header state={userData} setView={this.setView.bind(this)}/>
-  						<OverlayTrigger placement='bottom' overlay={<Tooltip><strong>Holy guacamole!</strong> Check this info.</Tooltip>}>
 		  					<section className="profile">
-								<p> Name: <input className="loginInput" onChange={this.updateUser.bind(this, 'name')} value={userData.name} /></p>
-								<p> Affiliated institution <input className="loginInput" onChange={this.updateUser.bind(this, 'institution')} value={userData.institution} /></p> 
-								<p> A description of yourself: <input className="loginInput" onChange={this.updateUser.bind(this, 'description')} value={userData.description} /></p>
+  								<OverlayTrigger placement='right' overlay={<Tooltip><strong>Holy guacamole!</strong> Check this info.</Tooltip>}>
+									<p className="cf"> name: <input className="loginInput" onChange={this.updateUser.bind(this, 'name')} value={userData.name} /></p>
+								</OverlayTrigger>
+  								<OverlayTrigger placement='right' overlay={<Tooltip><strong>Holy guacamole!</strong> Check this info.</Tooltip>}>
+									<p className="cf"> institution: <input className="loginInput" onChange={this.updateUser.bind(this, 'institution')} value={userData.institution} /></p> 
+								</OverlayTrigger>
+  								<OverlayTrigger placement='right' overlay={<Tooltip><strong>Holy guacamole!</strong> Check this info.</Tooltip>}>
+									<p className="cf"> description: <input className="loginInput" onChange={this.updateUser.bind(this, 'description')} value={userData.description} /></p>
+								</OverlayTrigger>
 								<button bsStyle='primary' bsSize='large' onClick={ this.setView.bind(this, 'waypoint') }> Im all done! Please click me to have a blast at updating your awesome waypoint! </button>
-		  					</section>
-						</OverlayTrigger>
-	  					
+		  					</section>	
 			  		</div>
 		  			<footer>
 	                    <h3> Unacademic - Amsterdam </h3>

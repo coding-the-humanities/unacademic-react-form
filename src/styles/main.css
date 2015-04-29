@@ -67,6 +67,16 @@ header h1 {
 		margin-bottom: 2.5em;
 	}
 
+
+.profile p {
+	width: 50%;
+	margin: 0 auto;
+}
+
+.profile input {
+	float: right;
+}
+
 /* normalisation of semantic elements */
 
 form {

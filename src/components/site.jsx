@@ -262,7 +262,9 @@ class Site extends React.Component {
 		  			<div className="wrapper cf">
 	  					<Header state={userData} setView={this.setView.bind(this)}/>
 	  					<section className="profile">
-							<p> Name: <input className="loginInput" onChange={this.updateUser.bind(this, 'name')} value={userData.name} /></p> 
+	  						<OverlayTrigger placement='bottom' overlay={<Tooltip><strong>Holy guacamole!</strong> Check this info.</Tooltip>}>
+								<p> Name: <input className="loginInput" onChange={this.updateUser.bind(this, 'name')} value={userData.name} /></p>
+							</OverlayTrigger>
 							<p> Affiliated institution <input className="loginInput" onChange={this.updateUser.bind(this, 'institution')} value={userData.institution} /></p> 
 							<p> A description of yourself: <input className="loginInput" onChange={this.updateUser.bind(this, 'description')} value={userData.description} /></p>
 							<button bsStyle='primary' bsSize='large' onClick={ this.setView.bind(this, 'waypoint') }> Im all done! Please click me to have a blast at updating your awesome waypoint! </button>

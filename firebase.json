@@ -1,0 +1,9 @@
+{
+  "firebase": "unacademic-form",
+  "public": "build",
+  "ignore": [
+    "firebase.json",
+    "**/.*",
+    "**/node_modules/**"
+  ]
+}

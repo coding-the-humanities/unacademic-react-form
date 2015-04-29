@@ -14,9 +14,7 @@ var config = {
       './src/components/site.jsx'
     ],
     vendor: [
-      'react',
-      'firebase/lib/firebase-web.js'
-    ]
+      'react'    ]
   },
   output: {
     path: './build',

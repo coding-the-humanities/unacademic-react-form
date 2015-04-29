@@ -2,6 +2,10 @@ import React from 'react';
 
 import Checkpoint from './checkpoint.jsx';
 
+import Tooltip from '../../../node_modules/react-bootstrap/lib/Tooltip.js';
+import OverlayTrigger from '../../../node_modules/react-bootstrap/lib/OverlayTrigger.js';
+
+
 class Form extends React.Component {
 
 	render(){
@@ -14,9 +18,15 @@ class Form extends React.Component {
 	  		<form className="form">
 	  			<fieldset className="waypoint">
 		  			<legend><h1>Waypoint:</h1></legend>
-		  			<p className="cf"><label>title: </label><input value={waypoint.title} onChange={ setValue.bind(this, outsideIndex, "title") }></input></p>
-		  			<p className="cf"><label>summary: </label><input value={waypoint.summary} onChange={ setValue.bind(this, outsideIndex, "summary") }></input></p>
-		  			<p className="cf"><label>description: </label><textarea value={waypoint.description} onChange={ setValue.bind(this, outsideIndex, "description") }></textarea></p>
+					<OverlayTrigger placement='right' overlay={<Tooltip><strong>Holy guacamole!</strong> Check this info.</Tooltip>}>
+		  				<p className="cf"><label>title: </label><input value={waypoint.title} onChange={ setValue.bind(this, outsideIndex, "title") }></input></p>
+		  			</OverlayTrigger>
+					<OverlayTrigger placement='right' overlay={<Tooltip><strong>Holy guacamole!</strong> Check this info.</Tooltip>}>
+		  				<p className="cf"><label>summary: </label><input value={waypoint.summary} onChange={ setValue.bind(this, outsideIndex, "summary") }></input></p>
+		  			</OverlayTrigger>
+					<OverlayTrigger placement='right' overlay={<Tooltip><strong>Holy guacamole!</strong> Check this info.</Tooltip>}>
+		  				<p className="cf"><label>description: </label><textarea value={waypoint.description} onChange={ setValue.bind(this, outsideIndex, "description") }></textarea></p>
+		  			</OverlayTrigger>
 		  		</fieldset>
 
 	  			<p className="checkpointContainer"> Checkpoints: </p>

@@ -1,6 +1,10 @@
 import React from 'react';
 import Resource from './resource.jsx';
 
+import Tooltip from '../../../node_modules/react-bootstrap/lib/Tooltip.js';
+import OverlayTrigger from '../../../node_modules/react-bootstrap/lib/OverlayTrigger.js';
+
+
 class Checkpoint extends React.Component {
 
 	render(){
@@ -20,9 +24,15 @@ class Checkpoint extends React.Component {
 				  	</div>
 			  		<fieldset>
 			  			<div className="checkpointProperties">
-				  			<p className="cf"> title: <input value={checkpoint.title} onChange={ setValue.bind(this, outsideIndex, "title") }></input></p>
-				  			<p className="cf"> description: <input value={checkpoint.description} onChange={ setValue.bind(this, outsideIndex, "description") }></input></p>
-				  			<p className="cf"> instructions: <input value={checkpoint.instructions} onChange={ setValue.bind(this, outsideIndex, "instructions") }></input></p>
+							<OverlayTrigger placement='right' overlay={<Tooltip><strong>Holy guacamole!</strong> Check this info.</Tooltip>}>
+				  				<p className="cf"> title: <input value={checkpoint.title} onChange={ setValue.bind(this, outsideIndex, "title") }></input></p>
+		  					</OverlayTrigger>
+							<OverlayTrigger placement='right' overlay={<Tooltip><strong>Holy guacamole!</strong> Check this info.</Tooltip>}>
+				  				<p className="cf"> description: <input value={checkpoint.description} onChange={ setValue.bind(this, outsideIndex, "description") }></input></p>
+		  					</OverlayTrigger>
+							<OverlayTrigger placement='right' overlay={<Tooltip><strong>Holy guacamole!</strong> Check this info.</Tooltip>}>
+				  				<p className="cf"> instructions: <input value={checkpoint.instructions} onChange={ setValue.bind(this, outsideIndex, "instructions") }></input></p>
+		  					</OverlayTrigger>
 					  	</div>
 					  	<div className="resourcesContainer">
 							<p> Resources: </p>

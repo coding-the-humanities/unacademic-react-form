@@ -1,5 +1,6 @@
 import React from 'react';
 import Firebase from '../../node_modules/firebase/lib/firebase-web.js';
+import Bootstrap from '../../node_modules/react-bootstrap/dist/react-bootstrap.js';
 
 import Form from './form/form.jsx';
 import WaypointsList from './waypoints-list.jsx';
@@ -7,7 +8,10 @@ import Login from './login.jsx';
 import Header from './header.jsx';
 import Model from '../models/model.jsx';
 
-import css from '../styles/main.css';
+import cssBootstrap from '../../node_modules/bootstrap/dist/css/bootstrap.css';
+import cssMain from '../styles/main.css';
+
+console.log(css);
 
 class Site extends React.Component {
 

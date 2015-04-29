@@ -43,6 +43,7 @@
     "postcss-simple-vars": "^0.2.4",
     "ramda": "^0.13.0",
     "react": "^0.13.0",
+    "react-bootstrap": "^0.21.0",
     "react-hot-loader": "^1.1.5",
     "react-tools": "^0.13.0-rc1",
     "sinon": "git://github.com/cjohansen/Sinon.JS#sinon-2.0",

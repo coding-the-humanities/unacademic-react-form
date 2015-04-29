@@ -14,7 +14,7 @@ class Checkpoint extends React.Component {
 		  		<div className="checkpoint">
 		  			<div className="checkpointTitle cf">
 			  			<h3 > {this.props.index[1]+ 1}: {checkpoint.title} </h3>
-				  		<button type="button" className="utility hide" onClick={this.props.toggleNesting.bind(this, outsideIndex)}>/\</button>
+				  		<button type="button" className="utility hideCheckpoint" onClick={this.props.toggleNesting.bind(this, outsideIndex)}>/\</button>
 					  	<button type="button" className="utility minus barButton" onClick={createOrRemovePoint.bind(this, outsideIndex, 'remove', 'checkpoint')}>-</button>
 						<button type="button" className="utility plus barButton" onClick={createOrRemovePoint.bind(this, outsideIndex, 'create', 'checkpoint')}>+</button>
 				  	</div>
@@ -50,7 +50,7 @@ class Checkpoint extends React.Component {
 		  		<div className="checkpoint">
 		  			<div className="checkpointTitle cf">
 			  			<h3 > {this.props.index[1]+ 1}: {checkpoint.title} </h3> 
-				  		<button type="button" className="utility hide" onClick={this.props.toggleNesting.bind(this, outsideIndex)}>\/</button>
+				  		<button type="button" className="utility hideCheckpoint" onClick={this.props.toggleNesting.bind(this, outsideIndex)}>\/</button>
 					  	<button type="button" className="utility minus barButton" onClick={createOrRemovePoint.bind(this, outsideIndex, 'remove', 'checkpoint')}>-</button>
 						<button type="button" className="utility plus barButton" onClick={createOrRemovePoint.bind(this, outsideIndex, 'create', 'checkpoint')}>+</button>
 				  	</div>

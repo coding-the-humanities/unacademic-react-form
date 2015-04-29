@@ -11,8 +11,6 @@ import Model from '../models/model.jsx';
 import cssBootstrap from '../../node_modules/bootstrap/dist/css/bootstrap.css';
 import cssMain from '../styles/main.css';
 
-console.log(css);
-
 class Site extends React.Component {
 
 	constructor(props){

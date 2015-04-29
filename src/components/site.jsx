@@ -258,13 +258,13 @@ class Site extends React.Component {
 	  					<Header state={userData} setView={this.setView.bind(this)}/>
 		  					<section className="profile">
   								<OverlayTrigger placement='right' overlay={<Tooltip><strong>Holy guacamole!</strong> Check this info.</Tooltip>}>
-									<p className="cf"> name: <input className="loginInput" onChange={this.updateUser.bind(this, 'name')} value={userData.name} /></p>
+									<p className="cf"> name: <input maxLength="30" className="loginInput" onChange={this.updateUser.bind(this, 'name')} value={userData.name} /></p>
 								</OverlayTrigger>
   								<OverlayTrigger placement='right' overlay={<Tooltip><strong>Holy guacamole!</strong> Check this info.</Tooltip>}>
-									<p className="cf"> institution: <input className="loginInput" onChange={this.updateUser.bind(this, 'institution')} value={userData.institution} /></p>
+									<p className="cf"> institution: <input maxLength="100" className="loginInput" onChange={this.updateUser.bind(this, 'institution')} value={userData.institution} /></p>
 								</OverlayTrigger>
   								<OverlayTrigger placement='right' overlay={<Tooltip><strong>Holy guacamole!</strong> Check this info.</Tooltip>}>
-									<p className="cf"> description: <input className="loginInput" onChange={this.updateUser.bind(this, 'description')} value={userData.description} /></p>
+									<p className="cf"> description: <input maxLength="500" className="loginInput" onChange={this.updateUser.bind(this, 'description')} value={userData.description} /></p>
 								</OverlayTrigger>
 								<button bsStyle='primary' bsSize='large' onClick={ this.setView.bind(this, 'waypoint') }> Im all done! Please click me to have a blast at updating your awesome waypoint! </button>
 		  					</section>

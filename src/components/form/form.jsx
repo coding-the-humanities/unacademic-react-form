@@ -19,13 +19,13 @@ class Form extends React.Component {
 	  			<fieldset className="waypoint">
 		  			<legend><h1>Waypoint:</h1></legend>
 					<OverlayTrigger placement='right' overlay={<Tooltip><strong>Holy guacamole!</strong> Check this info.</Tooltip>}>
-		  				<p className="cf"><label>title: </label><input value={waypoint.title} onChange={ setValue.bind(this, outsideIndex, "title") }></input></p>
+		  				<p className="cf"><label>title: </label><input maxLength="30" value={waypoint.title} onChange={ setValue.bind(this, outsideIndex, "title") }></input></p>
 		  			</OverlayTrigger>
 					<OverlayTrigger placement='right' overlay={<Tooltip><strong>Holy guacamole!</strong> Check this info.</Tooltip>}>
-		  				<p className="cf"><label>summary: </label><input value={waypoint.summary} onChange={ setValue.bind(this, outsideIndex, "summary") }></input></p>
+		  				<p className="cf"><label>summary: </label><input maxLength="100" value={waypoint.summary} onChange={ setValue.bind(this, outsideIndex, "summary") }></input></p>
 		  			</OverlayTrigger>
 					<OverlayTrigger placement='right' overlay={<Tooltip><strong>Holy guacamole!</strong> Check this info.</Tooltip>}>
-		  				<p className="cf"><label>description: </label><textarea value={waypoint.description} onChange={ setValue.bind(this, outsideIndex, "description") }></textarea></p>
+		  				<p className="cf"><label>description: </label><textarea maxLength="500" value={waypoint.description} onChange={ setValue.bind(this, outsideIndex, "description") }></textarea></p>
 		  			</OverlayTrigger>
 		  		</fieldset>
 

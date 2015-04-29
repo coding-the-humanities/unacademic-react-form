@@ -62,13 +62,13 @@ class Site extends React.Component {
 						}
 					}());
 				}
-				
+
 			}.bind(this)
 		);
 	}
 
 	updateFirebase(){
-		// Update firebase. 
+		// Update firebase.
 		// To save connections and data only one update at a time.
 		var userData = this.state.userData;
 		if (this.state.timeout == 0){
@@ -166,7 +166,7 @@ class Site extends React.Component {
 					return {userData: state.userData};
 				}, this.updateFirebase);
 			}
-		} 
+		}
 
 
 
@@ -192,7 +192,7 @@ class Site extends React.Component {
 					return {userData: state.userData};
 				}, this.updateFirebase);
 			}
-				
+
 		}
 	}
 
@@ -220,14 +220,14 @@ class Site extends React.Component {
 
 		var userData = this.state.userData,
 			activeWaypoint = this.state.activeWaypoint;
-			
+
 		if (this.state.view == 'waypoint'){
 		  	return (
 		  		<main className="cf">
 	  				<Header state={userData} setView={this.setView.bind(this)}/>
 		  			{	()=>{
 		  					if (userData.waypoints){
-		  						return (activeWaypoint == userData.waypoints.length) 
+		  						return (activeWaypoint == userData.waypoints.length)
 			 					? ( <h1> No waypoint selected</h1>)
 			 					: ( <Form state={userData.waypoints[activeWaypoint]} index={[activeWaypoint]} setValue={this.setValue.bind(this)} createOrRemovePoint={this.createOrRemovePoint.bind(this)}  nesting={this.state.nesting} toggleNesting={this.toggleNesting.bind(this)}/>);
 		  					} else {
@@ -235,7 +235,7 @@ class Site extends React.Component {
 		  					}
 		  			}()}
 		  			<footer>
-	                    <h3> Unacademic - Amsterdam </h3>
+	                    <h3> Unacademic_</h3>
 		  			</footer>
 		   		</main>
 		  	)
@@ -247,7 +247,7 @@ class Site extends React.Component {
 			  			<Login authWithFirebase={this.authWithFirebase.bind(this)} updateUser={this.updateUser.bind(this)} />
 			  		</div>
 		  			<footer>
-                    	<h3> Unacademic - Amsterdam </h3>
+                    	<h3> Unacademic_ </h3>
 		  			</footer>
 		  		</main>
 			)
@@ -261,16 +261,16 @@ class Site extends React.Component {
 									<p className="cf"> name: <input className="loginInput" onChange={this.updateUser.bind(this, 'name')} value={userData.name} /></p>
 								</OverlayTrigger>
   								<OverlayTrigger placement='right' overlay={<Tooltip><strong>Holy guacamole!</strong> Check this info.</Tooltip>}>
-									<p className="cf"> institution: <input className="loginInput" onChange={this.updateUser.bind(this, 'institution')} value={userData.institution} /></p> 
+									<p className="cf"> institution: <input className="loginInput" onChange={this.updateUser.bind(this, 'institution')} value={userData.institution} /></p>
 								</OverlayTrigger>
   								<OverlayTrigger placement='right' overlay={<Tooltip><strong>Holy guacamole!</strong> Check this info.</Tooltip>}>
 									<p className="cf"> description: <input className="loginInput" onChange={this.updateUser.bind(this, 'description')} value={userData.description} /></p>
 								</OverlayTrigger>
 								<button bsStyle='primary' bsSize='large' onClick={ this.setView.bind(this, 'waypoint') }> Im all done! Please click me to have a blast at updating your awesome waypoint! </button>
-		  					</section>	
+		  					</section>
 			  		</div>
 		  			<footer>
-	                    <h3> Unacademic - Amsterdam </h3>
+	                    <h3> Unacademic_ </h3>
 		  			</footer>
 		  		</main>
 			)

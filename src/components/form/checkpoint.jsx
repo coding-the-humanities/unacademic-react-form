@@ -31,19 +31,19 @@ class Checkpoint extends React.Component {
 				  				<p className="cf"> description: <input value={checkpoint.description} onChange={ setValue.bind(this, outsideIndex, "description") }></input></p>
 		  					</OverlayTrigger>
 							<OverlayTrigger placement='right' overlay={<Tooltip><strong>Holy guacamole!</strong> Check this info.</Tooltip>}>
-				  				<p className="cf"> instructions: <input value={checkpoint.instructions} onChange={ setValue.bind(this, outsideIndex, "instructions") }></input></p>
+				  				<p className="cf"> instructions: <textarea value={checkpoint.instructions} onChange={ setValue.bind(this, outsideIndex, "instructions") }></textarea></p>
 		  					</OverlayTrigger>
 					  	</div>
 					  	<div className="resourcesContainer">
-							<p> Resources: </p>
+							<p> Reference: </p>
 					  		{()=>{
-			  					return (typeof checkpoint.resources == 'undefined') 
-					 				? ( <p> No resources </p>) 
+			  					return (typeof checkpoint.resources == 'undefined')
+					 				? ( <p> No resources </p>)
 					 				: (
 										checkpoint.resources.map((value, index) => {
 
-							  				var insideIndex = JSON.parse(JSON.stringify(outsideIndex)); 
-							  				insideIndex.push(index); 
+							  				var insideIndex = JSON.parse(JSON.stringify(outsideIndex));
+							  				insideIndex.push(index);
 
 							  				return <Resource key={ index } index={ insideIndex } state={ value } setValue={setValue} createOrRemovePoint={createOrRemovePoint}/>
 							  			})
@@ -59,7 +59,7 @@ class Checkpoint extends React.Component {
 			return (
 		  		<div className="checkpoint">
 		  			<div className="checkpointTitle cf">
-			  			<h3 > {this.props.index[1]+ 1}: {checkpoint.title} </h3> 
+			  			<h3 > {this.props.index[1]+ 1}: {checkpoint.title} </h3>
 				  		<button type="button" className="utility hideCheckpoint" onClick={this.props.toggleNesting.bind(this, outsideIndex)}>\/</button>
 					  	<button type="button" className="utility minus barButton" onClick={createOrRemovePoint.bind(this, outsideIndex, 'remove', 'checkpoint')}>-</button>
 						<button type="button" className="utility plus barButton" onClick={createOrRemovePoint.bind(this, outsideIndex, 'create', 'checkpoint')}>+</button>

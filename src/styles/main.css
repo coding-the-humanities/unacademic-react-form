@@ -64,9 +64,12 @@ header h1 {
 }
 
 .login h1{
-		margin-bottom: 2.5em;
+		margin-bottom: 1em;
 	}
 
+.profile{
+	margin-top: 100px;
+}
 
 .profile p {
 	width: 50%;
@@ -75,6 +78,15 @@ header h1 {
 
 .profile input {
 	float: right;
+}
+
+.profile input:last-of-type{
+	height:100px;
+}
+.profile button{
+	margin-top: 50px;
+	margin-left: 300px;
+	margin-bottom: 50px;
 }
 
 /* normalisation of semantic elements */
@@ -181,12 +193,24 @@ header p {
 	display: inline-block;
 	float: right;
 	margin: 0;
+	margin-right: 50px;
+}
+
+header p:hover{
+	color:red;
 }
 
 /* Button styling in the document */
 
 button {
 	margin: 0 auto;
+	border-style: none;
+	background-color: hsla(168, 77%, 42%, 0.3);
+}
+
+button:hover{
+	background-color: hsla(168, 77%, 42%, 0.5);
+	box-shadow: 10px 10px 5px #888888;
 }
 
 .authButton {
@@ -195,8 +219,6 @@ button {
 	margin: 0 20px;
 	display: block;
 	border-radius: 50%;
-	border-style: none;
-	background-color: hsla(168, 77%, 42%, 0.3);
 	display: inline-block;
 }
 
@@ -204,10 +226,6 @@ button {
 	outline: 0;
 }
 
-.authButton:hover {
-	background-color: hsla(168, 77%, 42%, 0.5);
-	box-shadow: 10px 10px 5px #888888;;
-}
 
 .utility {
 	height: 50px;
@@ -215,7 +233,6 @@ button {
 	margin: 0 auto;
 	display: block;
 	border-radius: 50%;
-	background-color: hsla(0,100%,100%,1);
 }
 
 .utility:hover {

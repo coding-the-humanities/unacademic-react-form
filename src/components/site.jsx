@@ -1,6 +1,10 @@
 import React from 'react';
 import Firebase from '../../node_modules/firebase/lib/firebase-web.js';
-import Bootstrap from '../../node_modules/react-bootstrap/dist/react-bootstrap.js';
+import cssBootstrap from '../../node_modules/bootstrap/dist/css/bootstrap.css';
+
+import Tooltip from '../../node_modules/react-bootstrap/lib/Tooltip.js';
+import OverlayTrigger from '../../node_modules/react-bootstrap/lib/OverlayTrigger.js';
+
 
 import Form from './form/form.jsx';
 import WaypointsList from './waypoints-list.jsx';
@@ -8,8 +12,8 @@ import Login from './login.jsx';
 import Header from './header.jsx';
 import Model from '../models/model.jsx';
 
-import cssBootstrap from '../../node_modules/bootstrap/dist/css/bootstrap.css';
 import cssMain from '../styles/main.css';
+
 
 class Site extends React.Component {
 
@@ -244,7 +248,12 @@ class Site extends React.Component {
 			  			<Login authWithFirebase={this.authWithFirebase.bind(this)} updateUser={this.updateUser.bind(this)} />
 			  		</div>
 		  			<footer>
-	                    <h3> Unacademic - Amsterdam </h3>
+
+		  			 	<OverlayTrigger placement='left' overlay={<Tooltip><strong>Holy guacamole!</strong> Check this info.</Tooltip>}>
+      						<button bsStyle='default'>Holy guacamole!</button>
+    					</OverlayTrigger>
+                    	<h3> Unacademic - Amsterdam </h3>
+
 		  			</footer>
 		  		</main>
 			)
@@ -257,7 +266,7 @@ class Site extends React.Component {
 							<p> Name: <input className="loginInput" onChange={this.updateUser.bind(this, 'name')} value={userData.name} /></p> 
 							<p> Affiliated institution <input className="loginInput" onChange={this.updateUser.bind(this, 'institution')} value={userData.institution} /></p> 
 							<p> A description of yourself: <input className="loginInput" onChange={this.updateUser.bind(this, 'description')} value={userData.description} /></p>
-							<button onClick={ this.setView.bind(this, 'waypoint') }> Im all done! Please click me to have a blast at updating your awesome waypoint! </button>
+							<button bsStyle='primary' bsSize='large' onClick={ this.setView.bind(this, 'waypoint') }> Im all done! Please click me to have a blast at updating your awesome waypoint! </button>
 	  					</section>
 			  		</div>
 		  			<footer>

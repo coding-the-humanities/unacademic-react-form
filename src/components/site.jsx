@@ -264,7 +264,7 @@ class Site extends React.Component {
   								<OverlayTrigger placement='right' overlay={<Tooltip><strong>Help!</strong> Fill in your bio</Tooltip>}>
 									<p className="cf "> description: <textarea maxLength="500" className="loginInput bio" onChange={this.updateUser.bind(this, 'description')} value={userData.description} /></p>
 								</OverlayTrigger>
-								<button bsStyle='primary' bsSize='large' onClick={ this.setView.bind(this, 'waypoint') }> Im all done! Please click me to have a blast at updating your awesome waypoint! </button>
+								<button bsStyle='primary' bsSize='large' onClick={ this.setView.bind(this, 'waypoint') }> Submit and take me back to my waypoint </button>
 		  					</section>
 			  		</div>
 		  			<footer>

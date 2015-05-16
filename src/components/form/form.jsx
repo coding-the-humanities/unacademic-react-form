@@ -2,9 +2,39 @@ import React from 'react';
 
 import Checkpoint from './checkpoint.jsx';
 
+import Modal from '../../../node_modules/react-bootstrap/lib/Modal.js';
+import ModalTrigger from '../../../node_modules/react-bootstrap/lib/ModalTrigger.js';
 import Tooltip from '../../../node_modules/react-bootstrap/lib/Tooltip.js';
 import OverlayTrigger from '../../../node_modules/react-bootstrap/lib/OverlayTrigger.js';
 
+// class imgModal extends React.Component{
+// 	render() {
+// 		console.log('rin');
+// 	    return (
+// 		    <Modal {...this.props} title='Modal heading' animation={false}>
+// 		        <div className='modal-body'>
+// 		        	<h1> HELLLO </h1>
+// 					<img src={require("../../assets/unacReal.png")} className="unacScreenshot"/>
+// 		        </div>
+// 		        <div className='modal-footer'>
+// 		          	<Button onClick={this.props.onRequestHide}>Close</Button>
+// 		        </div>
+// 		    </Modal>
+// 	    );
+// 	}
+// }
+
+const ImgModal = React.createClass({
+  render() {
+    return (
+      <Modal {...this.props} title='Unacademic Interface' animation={false}>
+        <div className='modal-body'>
+			<img src={require("../../assets/unacReal.png")} className="unacScreenshotModal"/>
+        </div>   
+      </Modal>
+    );
+  }
+});
 
 class Form extends React.Component {
 
@@ -29,7 +59,11 @@ class Form extends React.Component {
 			  				<p className="cf"><label>description: </label><textarea maxLength="500" value={waypoint.description} onChange={ setValue.bind(this, outsideIndex, "description") }></textarea></p>
 			  			</OverlayTrigger>
 			  		</fieldset>
-		  			<img src={require("../../assets/unacReal.png")} className="unacScreenshot"/>
+			  		<imgModal />
+
+			  		<ModalTrigger modal={<ImgModal />}>
+		  				<img src={require("../../assets/unacReal.png")} className="unacScreenshot"/>
+		  			</ModalTrigger>
 			  	</div>
 
 	  			<p className="checkpointContainer"> Checkpoints: </p>

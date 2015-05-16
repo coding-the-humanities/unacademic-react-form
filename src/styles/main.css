@@ -101,10 +101,6 @@ fieldset {
 
 /* Setting all the paddings and margins on the elements */
 
-.waypointContainer {
-
-}
-
 .waypoint {
 	width: 50%;
 	border: none;
@@ -120,6 +116,14 @@ fieldset {
 .unacScreenshot {
 	padding: 10% 0 0 5%;
 	width: 40%;
+}
+
+.unacScreenshotModal {
+	width: 100%;
+}
+
+.modal-dialog {
+	width:90%;
 }
 
 .checkpointContainer {

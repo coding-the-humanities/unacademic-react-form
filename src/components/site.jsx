@@ -106,8 +106,14 @@ class Site extends React.Component {
 	}
 
 	setValue(index, fieldType, fieldIsArray, event){
+		console.log('high state')
+		if (!event){
+			event = fieldIsArray;
+		}
 		var newValue = event.target.value,
 			fieldType = fieldType;
+
+		console.log(newValue)
 		if (index.length == 1){
 			this.setState(function(state){
 				state.userData.waypoints[index[0]][fieldType] = newValue;
@@ -119,7 +125,6 @@ class Site extends React.Component {
 				return {userData: state.userData};
 			}, this.updateFirebase);
 		} else if (index.length == 3){
-			console.log(typeof fieldIsArray)
 			if (typeof fieldIsArray != 'number') {
 				this.setState(function(state){
 					state.userData.waypoints[index[0]].checkpoints[index[1]].resources[index[2]][fieldType] = newValue;
@@ -151,10 +156,12 @@ class Site extends React.Component {
 
 					if (!checkpoints){checkpoints = [];}
 
+					if (state.userData.waypoints[index[0]].checkpoints.length == 5){
+						return {userData: state.userData};
+					}
+
 					//determine index to splice
-
 					let spliceIndex;
-
 					if (index[1] == 0){
 						spliceIndex = 0;
 					} else if (!index[1]){
@@ -169,6 +176,9 @@ class Site extends React.Component {
 				}, this.updateFirebase);
 			} else if (type == 'resource'){
 				this.setState(function(state){
+					if (state.userData.waypoints[index[0]].checkpoints[index[1]].resources.length == 3){
+						return {userData: state.userData};
+					}
 					if (!state.userData.waypoints[index[0]].checkpoints[index[1]].resources){state.userData.waypoints[index[0]].checkpoints[index[1]].resources = [];}
 					state.userData.waypoints[index[0]].checkpoints[index[1]].resources.push(new Model.Resource(1));
 					return {userData: state.userData};
@@ -225,7 +235,7 @@ class Site extends React.Component {
 	}
 
 	render(){
-
+		console.log(this.state.userData)
 		var userData = this.state.userData,
 			activeWaypoint = this.state.activeWaypoint;
 

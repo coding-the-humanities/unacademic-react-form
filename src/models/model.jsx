@@ -19,7 +19,7 @@ class Checkpoint {
     this.title = "";
     this.introduction = "";
     this.resources = [new Resource];
-    this.instructions = "";
+    this.instructions = [""];
   };
 };
 

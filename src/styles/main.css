@@ -154,6 +154,11 @@ fieldset {
 	display: inline-block;
 }
 
+.checkpoint .instructions {
+	width: 88%;
+	float:left;
+}
+
 .resourcesContainer {
 	padding: 0 30px;
 	width: 50%;
@@ -162,7 +167,7 @@ fieldset {
 }
 
 .resource {
-	padding: 0 10px 10px 10px;
+	padding: 10px 10px 10px 10px;
 	margin-bottom: 20px;
 	background-color: hsla(168, 77%, 42%, 0.5);
 	border: none;
@@ -172,6 +177,25 @@ fieldset {
 	width: 19%;
 	margin-right: 1%;
 	float: left;
+}
+
+.resource select {
+	width: 100%;
+}
+
+.resource .type {
+	width: 58%;
+	float: left;
+}
+
+.resource .timeToDigest {
+	width: 40%;
+	margin-left: 2%;
+	float:left;
+}
+
+.resource .timeToDigest select {
+	margin-top: 10px;
 }
 
 
@@ -264,6 +288,13 @@ button:hover{
 
 .utility:focus {
 	outline: none;
+}
+
+.utility.small {
+	float: left;
+	width: 20px;
+	height: 20px;
+	margin: 10px 0px 0px 5px ;
 }
 
 .barButton {

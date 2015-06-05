@@ -6,6 +6,40 @@ import OverlayTrigger from '../../../node_modules/react-bootstrap/lib/OverlayTri
 
 
 class Checkpoint extends React.Component {
+	constructor(props){
+		super(props);
+		this.state = {
+			list: ["he","ne"]
+		}
+	}
+
+	updateHigherState() {
+		this.props.setValue.bind(this, this.props.index, "instructions", {target: {value: this.state.list}})
+	}
+
+	setLocalValue(index, e){
+		var newValue = event.target.value;
+		this.setState((oldState) => {
+			oldState.list[index] = newValue;
+			return {list: oldState.list}
+		}, this.updateHigherState)
+
+	}
+
+	addListItem(){
+		this.setState(function(oldState){
+			let newState = oldState.list.push("");
+			return newState;
+		});
+	}
+
+	removeListItem(spliceIndex, e){
+		this.setState(function(oldState){
+			let newState = oldState.list.splice(spliceIndex, 1);
+			return newState;
+		});
+		e.preventDefault();
+	}
 
 	render(){
 		var setValue = this.props.setValue,
@@ -26,10 +60,19 @@ class Checkpoint extends React.Component {
 			  			<div className="checkpointProperties">
 			  				<p className="cf"> title: <input maxLength="30" value={checkpoint.title} onChange={ setValue.bind(this, outsideIndex, "title") }></input></p>
 			  				<p className="cf"> introduction: <textarea maxLength="100" value={checkpoint.introduction} onChange={ setValue.bind(this, outsideIndex, "introduction") }></textarea></p>
-			  				<p className="cf"> instructions: <input maxLength="500" value={checkpoint.instructions} onChange={ setValue.bind(this, outsideIndex, "instructions") }></input></p>
+			  				<p>instructions: </p>
+			  				{checkpoint.instructions.map((value, index) => {
+		  						return (
+		  							<p key={index} className="cf">
+		  								<input className="instructions" maxLength="500" value={checkpoint.instructions[index]} onChange={ this.setLocalValue.bind(this, index) }></input>
+		  								<button className="utility plus small" onClick={ this.removeListItem.bind(this, index) }>-</button>
+		  							</p>
+		  						)
+		  					})}
+				  			<button type="button" className="utility plus" onClick={this.addListItem.bind(this)}>+</button>
 					  	</div>
 					  	<div className="resourcesContainer">
-							<p> Reference: </p>
+							<p> References: (3 max)</p>
 					  		{()=>{
 			  					return (typeof checkpoint.resources == 'undefined')
 					 				? ( <p> No resources </p>)
@@ -44,7 +87,7 @@ class Checkpoint extends React.Component {
 					  				)
 					  			;
 				  			}()}
-				  			<button type="button" className="utility plus something" onClick={createOrRemovePoint.bind(this, outsideIndex, 'create', 'resource')}>+</button>
+				  			<button type="button" className="utility plus" onClick={createOrRemovePoint.bind(this, outsideIndex, 'create', 'resource')}>+</button>
 			  			</div>
 			   		</fieldset>
 		   		</div>

@@ -153,8 +153,10 @@ class Site extends React.Component {
 
 					if (!checkpoints){checkpoints = [];}
 
-					if (state.userData.waypoints[index[0]].checkpoints.length == 5){
-						return {userData: state.userData};
+					if (state.userData.waypoints[index[0]].checkpoints){
+						if (state.userData.waypoints[index[0]].checkpoints.length >= 5){
+							return {userData: state.userData};
+						}
 					}
 
 					//determine index to splice
@@ -168,13 +170,15 @@ class Site extends React.Component {
 					}
 
 					checkpoints.splice(spliceIndex, 0, new Model.Checkpoint(1));
-
+					state.userData.waypoints[index[0]].checkpoints = checkpoints;
 					return {userData: state.userData};
 				}, this.updateFirebase);
 			} else if (type == 'resource'){
 				this.setState(function(state){
-					if (state.userData.waypoints[index[0]].checkpoints[index[1]].resources.length == 3){
-						return {userData: state.userData};
+					if (state.userData.waypoints[index[0]].checkpoints[index[1]].resources){
+						if (state.userData.waypoints[index[0]].checkpoints[index[1]].resources.length >= 3){
+							return {userData: state.userData};
+						}
 					}
 					if (!state.userData.waypoints[index[0]].checkpoints[index[1]].resources){state.userData.waypoints[index[0]].checkpoints[index[1]].resources = [];}
 					state.userData.waypoints[index[0]].checkpoints[index[1]].resources.push(new Model.Resource(1));

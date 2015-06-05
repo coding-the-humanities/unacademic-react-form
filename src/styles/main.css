@@ -168,6 +168,12 @@ fieldset {
 	border: none;
 }
 
+.resource .tags{
+	width: 19%;
+	margin-right: 1%;
+	float: left;
+}
+
 
 
 /* The styling of input boxes */
@@ -196,6 +202,7 @@ input:focus{
 .loginInput {
 	display: inline-block;
 	width: 20em;
+	margin-top:5px;
 }
 
 header h1 {
@@ -248,6 +255,7 @@ button:hover{
 	margin: 0 auto;
 	display: block;
 	border-radius: 50%;
+	/*border: 1px solid black;*/
 }
 
 .utility:hover {

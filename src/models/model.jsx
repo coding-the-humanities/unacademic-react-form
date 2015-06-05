@@ -3,13 +3,21 @@ class Resource {
     this.title = "";
     this.author = "";
     this.url = "";
+    this.clarity = 0;
+    this.difficulty = 0;
+    this.uptodateness = 0;
+    this.pertinence = 0;
+    this.enjoyment = 0;
+    this.time_to_digest = 0;
+    this.tags = ["","","","",""];
+    this.type = "";
   }
 }
 
 class Checkpoint {
   constructor() {
     this.title = "";
-    this.description = "";
+    this.introduction = "";
     this.resources = [new Resource];
     this.instructions = "";
   };

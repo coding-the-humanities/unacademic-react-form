@@ -24,15 +24,9 @@ class Checkpoint extends React.Component {
 				  	</div>
 			  		<fieldset>
 			  			<div className="checkpointProperties">
-							<OverlayTrigger placement='right' overlay={<Tooltip><strong>Help!</strong> Enter the title of the checkpoint and keep the title actionable</Tooltip>}>
-				  				<p className="cf"> title: <input maxLength="30" value={checkpoint.title} onChange={ setValue.bind(this, outsideIndex, "title") }></input></p>
-		  					</OverlayTrigger>
-							<OverlayTrigger placement='right' overlay={<Tooltip><strong>Help!</strong> Explain how this checkpoint relates to the waypoint and give context</Tooltip>}>
-				  				<p className="cf"> description: <textarea maxLength="100" value={checkpoint.description} onChange={ setValue.bind(this, outsideIndex, "description") }></textarea></p>
-		  					</OverlayTrigger>
-							<OverlayTrigger placement='right' overlay={<Tooltip><strong>Help!</strong> Explain how the reference should be consumed</Tooltip>}>
-				  				<p className="cf"> instructions: <input maxLength="500" value={checkpoint.instructions} onChange={ setValue.bind(this, outsideIndex, "instructions") }></input></p>
-		  					</OverlayTrigger>
+			  				<p className="cf"> title: <input maxLength="30" value={checkpoint.title} onChange={ setValue.bind(this, outsideIndex, "title") }></input></p>
+			  				<p className="cf"> introduction: <textarea maxLength="100" value={checkpoint.introduction} onChange={ setValue.bind(this, outsideIndex, "introduction") }></textarea></p>
+			  				<p className="cf"> instructions: <input maxLength="500" value={checkpoint.instructions} onChange={ setValue.bind(this, outsideIndex, "instructions") }></input></p>
 					  	</div>
 					  	<div className="resourcesContainer">
 							<p> Reference: </p>

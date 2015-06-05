@@ -7,7 +7,6 @@ import OverlayTrigger from '../../node_modules/react-bootstrap/lib/OverlayTrigge
 
 
 import Form from './form/form.jsx';
-import WaypointsList from './waypoints-list.jsx';
 import Login from './login.jsx';
 import Header from './header.jsx';
 import Model from '../models/model.jsx';
@@ -106,7 +105,7 @@ class Site extends React.Component {
 		}
 	}
 
-	setValue(index, fieldType, event){
+	setValue(index, fieldType, fieldIsArray, event){
 		var newValue = event.target.value,
 			fieldType = fieldType;
 		if (index.length == 1){
@@ -120,10 +119,18 @@ class Site extends React.Component {
 				return {userData: state.userData};
 			}, this.updateFirebase);
 		} else if (index.length == 3){
-			this.setState(function(state){
-				state.userData.waypoints[index[0]].checkpoints[index[1]].resources[index[2]][fieldType] = newValue;
-				return {userData: state.userData};
-			}, this.updateFirebase);
+			console.log(typeof fieldIsArray)
+			if (typeof fieldIsArray != 'number') {
+				this.setState(function(state){
+					state.userData.waypoints[index[0]].checkpoints[index[1]].resources[index[2]][fieldType] = newValue;
+					return {userData: state.userData};
+				}, this.updateFirebase);
+			} else {
+				this.setState(function(state){
+					state.userData.waypoints[index[0]].checkpoints[index[1]].resources[index[2]][fieldType][fieldIsArray] = newValue;
+					return {userData: state.userData};
+				}, this.updateFirebase);
+			}
 		}
 	}
 
@@ -258,13 +265,9 @@ class Site extends React.Component {
 		  			<div className="wrapper cf">
 	  					<Header state={userData} setView={this.setView.bind(this)}/>
 		  					<section className="profile">
-									<p className="cf"> name: <input maxLength="30" className="loginInput" onChange={this.updateUser.bind(this, 'name')} value={userData.name} /></p>
-  								<OverlayTrigger placement='right' overlay={<Tooltip><strong>Help!</strong> Fill in the institution you are affiliated with</Tooltip>}>
-									<p className="cf"> institution: <input maxLength="100" className="loginInput" onChange={this.updateUser.bind(this, 'institution')} value={userData.institution} /></p>
-								</OverlayTrigger>
-  								<OverlayTrigger placement='right' overlay={<Tooltip><strong>Help!</strong> Fill in your bio</Tooltip>}>
-									<p className="cf "> description: <textarea maxLength="500" className="loginInput bio" onChange={this.updateUser.bind(this, 'description')} value={userData.description} /></p>
-								</OverlayTrigger>
+								<p className="cf"> name: <input maxLength="30" className="loginInput" onChange={this.updateUser.bind(this, 'name')} value={userData.name} /></p>
+								<p className="cf"> institution: <input maxLength="100" className="loginInput" onChange={this.updateUser.bind(this, 'institution')} value={userData.institution} /></p>
+								<p className="cf "> description: <textarea maxLength="500" className="loginInput bio" onChange={this.updateUser.bind(this, 'description')} value={userData.description} /></p>
 								<button bsStyle='primary' bsSize='large' onClick={ this.setView.bind(this, 'waypoint') }> Submit and take me back to my waypoint </button>
 		  					</section>
 			  		</div>

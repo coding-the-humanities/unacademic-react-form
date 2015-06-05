@@ -110,6 +110,10 @@ fieldset {
 
 .waypoint h1{
 	font-family: 'NB';
+	margin-top: 0;
+}
+
+.waypoint h3 {
 	padding-top: 15px;
 }
 

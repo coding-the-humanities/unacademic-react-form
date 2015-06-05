@@ -10,7 +10,7 @@ import OverlayTrigger from '../../../node_modules/react-bootstrap/lib/OverlayTri
 const ImgModal = React.createClass({
   render() {
     return (
-      <Modal {...this.props} title='Unacademic Interface' animation={false}>
+      <Modal {...this.props} title='Actual Offcourse Interface' animation={false}>
         <div className='modal-body'>
 			<img src={require("../../assets/unacReal.png")} className="unacScreenshotModal"/>
         </div>   
@@ -37,7 +37,6 @@ class Form extends React.Component {
 		  				<p className="cf"><label>description: </label><textarea maxLength="500" value={waypoint.description} onChange={ setValue.bind(this, outsideIndex, "description") }></textarea></p>
 			  		</fieldset>
 			  		<imgModal />
-
 			  		<ModalTrigger modal={<ImgModal />}>
 		  				<img src={require("../../assets/unacReal.png")} className="unacScreenshot"/>
 		  			</ModalTrigger>

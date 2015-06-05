@@ -38,7 +38,6 @@ class Site extends React.Component {
 		    	console.log('Login Failed!', error);
 		  	} else {
 		  		this.getDataFromFirebase(authData, provider);
-		  		console.log(authData);
 		  	}
 		}.bind(this));
 	}
@@ -106,14 +105,12 @@ class Site extends React.Component {
 	}
 
 	setValue(index, fieldType, fieldIsArray, event){
-		console.log('high state')
 		if (!event){
 			event = fieldIsArray;
 		}
 		var newValue = event.target.value,
 			fieldType = fieldType;
 
-		console.log(newValue)
 		if (index.length == 1){
 			this.setState(function(state){
 				state.userData.waypoints[index[0]][fieldType] = newValue;
@@ -235,7 +232,6 @@ class Site extends React.Component {
 	}
 
 	render(){
-		console.log(this.state.userData)
 		var userData = this.state.userData,
 			activeWaypoint = this.state.activeWaypoint;
 
@@ -253,7 +249,7 @@ class Site extends React.Component {
 		  					}
 		  			}()}
 		  			<footer>
-	                    <h3> Unacademic_</h3>
+	                    <h3> Offcourse_</h3>
 		  			</footer>
 		   		</main>
 		  	)
@@ -265,7 +261,7 @@ class Site extends React.Component {
 			  			<Login authWithFirebase={this.authWithFirebase.bind(this)} updateUser={this.updateUser.bind(this)} />
 			  		</div>
 		  			<footer>
-                    	<h3> Unacademic_ </h3>
+                    	<h3> Offcourse_ </h3>
 		  			</footer>
 		  		</main>
 			)
@@ -282,7 +278,7 @@ class Site extends React.Component {
 		  					</section>
 			  		</div>
 		  			<footer>
-	                    <h3> Unacademic_ </h3>
+	                    <h3> Offcourse_ </h3>
 		  			</footer>
 		  		</main>
 			)

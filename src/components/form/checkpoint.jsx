@@ -13,31 +13,27 @@ class Checkpoint extends React.Component {
 		}
 	}
 
-	updateHigherState() {
-		this.props.setValue.bind(this, this.props.index, "instructions", {target: {value: this.state.list}})
+	updateHigherState(newState) {
+		this.props.setValue.bind(this, this.props.index, "instructions", {target: {value: newState}})()
 	}
 
 	setLocalValue(index, e){
 		var newValue = event.target.value;
-		this.setState((oldState) => {
-			oldState.list[index] = newValue;
-			return {list: oldState.list}
-		}, this.updateHigherState)
-
+		var newState = this.props.state.instructions;
+		newState[index] = newValue;
+		this.updateHigherState(newState)
 	}
 
 	addListItem(){
-		this.setState(function(oldState){
-			let newState = oldState.list.push("");
-			return newState;
-		});
+		var newState = this.props.state.instructions;
+		newState.push("");
+		this.updateHigherState(newState)
 	}
 
 	removeListItem(spliceIndex, e){
-		this.setState(function(oldState){
-			let newState = oldState.list.splice(spliceIndex, 1);
-			return newState;
-		});
+		var newState = this.props.state.instructions;
+		newState.splice(spliceIndex, 1);
+		this.updateHigherState(newState)
 		e.preventDefault();
 	}
 
@@ -72,7 +68,7 @@ class Checkpoint extends React.Component {
 				  			<button type="button" className="utility plus" onClick={this.addListItem.bind(this)}>+</button>
 					  	</div>
 					  	<div className="resourcesContainer">
-							<p> References: (3 max)</p>
+							<p> references: (3 max)</p>
 					  		{()=>{
 			  					return (typeof checkpoint.resources == 'undefined')
 					 				? ( <p> No resources </p>)

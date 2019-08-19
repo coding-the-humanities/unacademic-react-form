@@ -34,7 +34,7 @@
     "jsdom": "^4.0.2",
     "json-loader": "^0.5.1",
     "jsx-loader": "^0.12.2",
-    "lodash": "^3.3.0",
+    "lodash": "^4.17.11",
     "mocha": "^2.2.1",
     "postcss-custom-properties": "^3.0.1",
     "postcss-custom-selectors": "^1.1.0",
